@@ -30,19 +30,29 @@ public class CubeState : MonoBehaviour
             {
                 // Parent of tile = cube
                 // Parent of cube = the middle cube now
-                face.transform.parent.transform.parent = cubeSide[4].transform.parent;
+                face.transform.parent.transform.parent.transform.parent = cubeSide[4].transform.parent.transform.parent;
+            }
+
+            // If the player is on this face, or on its rim, they get carried
+            if (face == FindFirstObjectByType<Snail>().GetCurrentTile() || Vector3.Distance(face.transform.position, FindFirstObjectByType<Snail>().GetCurrentTile().transform.position) < 0.75f)
+            {
+                FindFirstObjectByType<Snail>().gameObject.transform.parent = cubeSide[4].transform.parent.transform.parent;
             }
         }
-        cubeSide[4].transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);
+        
+        cubeSide[4].transform.parent.transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);
     }
 
     public void PutDown(List<GameObject> littleCubes, Transform pivot)
     {
+        FindFirstObjectByType<Snail>().gameObject.transform.parent = this.GetComponentInChildren<SelectFace>().gameObject.transform;
+
         foreach (GameObject littleCube in littleCubes)
         {
             if (littleCube != littleCubes[4])
             {
-                littleCube.transform.parent.transform.parent = pivot;
+                littleCube.transform.parent.transform.parent.transform.parent = pivot;
+                
             }
         }
     }

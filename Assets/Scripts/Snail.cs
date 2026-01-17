@@ -58,4 +58,9 @@ public class Snail : MonoBehaviour
             }
         }
     }
+
+    public GameObject GetCurrentTile()
+    {
+        return currentTile;
+    }
 }

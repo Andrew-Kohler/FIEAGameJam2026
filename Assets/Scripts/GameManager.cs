@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
 
-    private bool isMovingSnail = true;
+    private bool isMovingSnail = true; // Controls whether left mose rotates the cube or moves the snail
+    private bool isTurningLeft = true;  // Control variable for planetary rotations going in one of two directions
 
     public static GameManager Instance
     {
@@ -42,5 +43,15 @@ public class GameManager : MonoBehaviour
     public bool GetIsMovingSnail()
     {
         return isMovingSnail;
+    }
+
+    public bool GetIsTurningLeft()
+    {
+        return isTurningLeft;
+    }
+
+    public void SetIsTurningLeft(bool left)
+    {
+        isTurningLeft=left;
     }
 }

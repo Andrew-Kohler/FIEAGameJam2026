@@ -49,27 +49,21 @@ public class Tile : MonoBehaviour
         {
             case TileType.Volcano:
                 GetComponent<MeshRenderer>().material.color = Color.red;
-                Debug.Log("Initialized volcano");
                 break;
             case TileType.Snow:
                 GetComponent<MeshRenderer>().material.color = Color.white;
-                Debug.Log("Initialized snow");
                 break;
             case TileType.Jungle:
                 GetComponent<MeshRenderer>().material.color = Color.green;
-                Debug.Log("Initialized jungle");
                 break;
             case TileType.Wheat:
                 GetComponent<MeshRenderer>().material.color = Color.yellow;
-                Debug.Log("Initialized wheat");
                 break;
             case TileType.Ocean:
                 GetComponent<MeshRenderer>().material.color = Color.blue;
-                Debug.Log("Initialized ocean");
                 break;
             case TileType.Desert:
                 GetComponent<MeshRenderer>().material.color = Color.orange;
-                Debug.Log("Initialized desert");
                 break;
             default:
                 break;

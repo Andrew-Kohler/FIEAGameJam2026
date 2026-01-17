@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,11 @@ public class PivotRotation : MonoBehaviour
 
     private bool autoRotate = false;
 
+    private int rotVal = 2;
+
     private Quaternion targetQuaternion;
+
+    private Vector3 rotationSum;
 
     private ReadCube readCube;
     private CubeState cubeState;
@@ -34,9 +39,10 @@ public class PivotRotation : MonoBehaviour
         if (dragging)
         {
             SpinSide(activeSide);
-            if (Mouse.current.rightButton.wasReleasedThisFrame)
+            if (Mathf.Abs(rotationSum.y) > 45 || Mathf.Abs(rotationSum.x) > 45 || Mathf.Abs(rotationSum.z) > 45)
             {
                 dragging = false;
+                rotationSum = Vector3.zero;
                 RotateToRightAngle();
             }
         }
@@ -52,29 +58,23 @@ public class PivotRotation : MonoBehaviour
 
         Vector3 mouseOffset = Mouse.current.position.ReadValue() - mouseRef;
 
-        if(side == cubeState.frontTiles)
+        int directionConstant = 1;
+        if (!GameManager.Instance.GetIsTurningLeft()) { directionConstant = -1; }
+
+        if(side == cubeState.frontTiles || side == cubeState.backTiles)
         {
-            rotation.x = (mouseOffset.x + mouseOffset.y) * sensitivity * -1;
+            rotation.x =  rotVal * sensitivity * directionConstant; // (mouseOffset.x + mouseOffset.y)
+            rotationSum.x += rotation.x;
         }
-        if (side == cubeState.backTiles)
+        if (side == cubeState.upTiles || side == cubeState.downTiles)
         {
-            rotation.x = (mouseOffset.x + mouseOffset.y) * sensitivity * 1;
+            rotation.y = rotVal * sensitivity * directionConstant;
+            rotationSum.y += rotation.y;
         }
-        if (side == cubeState.upTiles)
+        if (side == cubeState.leftTiles || side == cubeState.rightTiles)
         {
-            rotation.y = (mouseOffset.x + mouseOffset.y) * sensitivity * -1;
-        }
-        if (side == cubeState.downTiles)
-        {
-            rotation.y = (mouseOffset.x + mouseOffset.y) * sensitivity * -1;
-        }
-        if (side == cubeState.leftTiles)
-        {
-            rotation.z = (mouseOffset.x + mouseOffset.y) * sensitivity * 1;
-        }
-        if (side == cubeState.rightTiles)
-        {
-            rotation.z = (mouseOffset.x + mouseOffset.y) * sensitivity * -1;
+            rotation.z = rotVal * sensitivity * directionConstant;
+            rotationSum.z += rotation.z;
         }
 
         transform.Rotate(rotation, Space.Self);
@@ -88,7 +88,7 @@ public class PivotRotation : MonoBehaviour
         dragging = true;
 
         // Create a vector to rotate around
-        localForward = Vector3.zero - side[4].transform.parent.transform.localPosition;
+        localForward = Vector3.zero - side[4].transform.parent.transform.parent.transform.localPosition;
     }
 
     public void RotateToRightAngle()
