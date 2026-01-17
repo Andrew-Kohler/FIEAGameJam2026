@@ -102,6 +102,11 @@ public class GameManager : MonoBehaviour
         return activeDustDevils;
     }
 
+    public void SetDustDevilCount(int count)
+    {
+        activeDustDevils = count;
+    }
+
     public void ResetAllValues()
     {
         health = maxHealth;

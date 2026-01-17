@@ -48,6 +48,7 @@ public class Snail : MonoBehaviour
 
                     // Need to proc all ocean tiles globally
                     UpdateOcean();
+                    UpdateDesert();
                 }
                 
             }
@@ -91,6 +92,28 @@ public class Snail : MonoBehaviour
                 {
                     {
                         face.GetComponent<Tile>().ProcTile();
+                    }
+                }
+            }
+        }
+    }
+
+    void UpdateDesert()
+    {
+        List<List<GameObject>> cubeSides = new List<List<GameObject>>()
+                {
+                    cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
+                };
+
+        // If the face exists within a side
+        foreach (List<GameObject> cubeSide in cubeSides)
+        {
+            foreach (GameObject face in cubeSide)
+            {
+                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                {
+                    {
+                        face.GetComponent<Tile>().updateDesert();
                     }
                 }
             }
