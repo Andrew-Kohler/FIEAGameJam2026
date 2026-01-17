@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Rendering.InspectorCurveEditor;
@@ -19,6 +22,8 @@ public class Snail : MonoBehaviour
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
+        Vector3 newRotation = new Vector3(0,0,0);
+        transform.rotation = Quaternion.Euler(newRotation);
     }
 
     // Update is called once per frame
@@ -31,18 +36,34 @@ public class Snail : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f, layerMask))
             {
                 GameObject face = hit.collider.gameObject;
-                Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
-
+                //UnityEngine.Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
-                    && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
+                    && face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
+                    float yDistance = currentTile.transform.position.y - face.transform.position.y;
+                    float xDistance = currentTile.transform.position.x - face.transform.position.x;
+                    float ZDistance = currentTile.transform.position.z - face.transform.position.z;
+
+                    UnityEngine.Debug.Log("DISTANCE: " + yDistance);
+                    if (yDistance == 0.5)
+                    {
+                        UnityEngine.Debug.Log("UP: " + yDistance);
+                        Vector3 currentEuler = transform.eulerAngles;
+                        currentEuler.x = 90;
+                        transform.rotation = Quaternion.Euler(currentEuler);
+                    }
+                    else if (yDistance == -0.5)
+                    {
+                        UnityEngine.Debug.Log("DOWN: " + yDistance);
+                        Vector3 currentEuler = transform.eulerAngles;
+                        currentEuler.x = - 90;
+                        transform.rotation = Quaternion.Euler(currentEuler);
+                    }
                     StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
 
+                    if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                     currentTile = face;
-                    if(face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
-                    {
-                        face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
-                    }
+                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
                     // Iterate through all tiles, and if they are close enough, reveal them
                     UpdateFogOfWar();
@@ -62,7 +83,6 @@ public class Snail : MonoBehaviour
                         }
                     }
                 }
-                
             }
         }
         
@@ -146,6 +166,7 @@ public class Snail : MonoBehaviour
         while (time < duration)
         {
             transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+
             time += Time.deltaTime;
             yield return null;
         }
