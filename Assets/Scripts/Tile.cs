@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class Tile : MonoBehaviour
 {
@@ -13,14 +14,14 @@ public class Tile : MonoBehaviour
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
 
     [Header("Ocean Data")]
-    private int turnsUntilSwap = 2;
-    private int turnsUntilSwapCounter;
+    public int turnsUntilSwap = 2;
+    public int turnsUntilSwapCounter;
 
     [Header("Volcano Data")]
     private float chanceToMeteor = .5f;
 
-    GameObject currentPassive;
-    GameObject currentActive;
+    public GameObject currentPassive;
+    public GameObject currentActive;
 
     void Start()
     {
@@ -30,7 +31,6 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void RevealFromFog()
@@ -38,16 +38,34 @@ public class Tile : MonoBehaviour
         if (isInFogOfWar)
         {
             isInFogOfWar = false;
-            if (passiveOccupant != null)
+            if (tileType == TileType.Ocean)
             {
-                if (currentPassive != null) Destroy(currentPassive);
-               currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.localRotation, this.transform.parent);
+                if (traversable)
+                {
+                    if (currentPassive != null) Destroy(currentPassive);
+                    if (currentActive != null) Destroy(currentActive);
+                    currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                else
+                {
+                    if (currentPassive != null) Destroy(currentPassive);
+                    if (currentActive != null) Destroy(currentActive);
+                    currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
             }
-            if (activeOccupant != null)
+            else
             {
-                if (currentActive != null) Destroy(currentActive);
-                currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.localRotation, this.transform.parent);
-            }
+                if (passiveOccupant != null)
+                {
+                    if (currentPassive != null) Destroy(currentPassive);
+                    currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                if (activeOccupant != null)
+                {
+                    if (currentActive != null) Destroy(currentActive);
+                    currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+            }  
         }
         
     }
@@ -136,11 +154,43 @@ public class Tile : MonoBehaviour
             case TileType.Wheat:
                 // No effects proc on the wheat tile
                 break;
-            case TileType.Ocean:
-                // No INDIVIDUAL effects proc on the water tile
+            case TileType.Ocean: // Called when all tiles across the world are proc'd
+                turnsUntilSwapCounter--;
+
+                if(turnsUntilSwapCounter == 0)
+                {
+                    turnsUntilSwapCounter = turnsUntilSwap;
+                    traversable = !traversable;
+                    if (!isInFogOfWar)
+                    {
+                        SendToFog();
+                        isInFogOfWar = false;
+                        if (!traversable) // The passive is the water, the active is the one you can stand on
+                        {
+                            if (currentPassive != null) Destroy(currentPassive);
+                            if (currentActive != null) Destroy(currentActive);
+                            currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                        }
+                        else
+                        {
+                            if (currentPassive != null) Destroy(currentPassive);
+                            if (currentActive != null) Destroy(currentActive);
+                            currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                        }
+                    }
+                }
                 break;
             case TileType.Desert:
-                // No INDIVIDUAL effects proc on the desert tile
+
+                if(currentActive == null)
+                {
+                    float chance = Random.Range(0, 1.0f);
+                    /*if(chance < .3f && )
+                    {
+
+                    }*/
+                }
+
                 break;
             default:
                 break;

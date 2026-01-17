@@ -30,16 +30,24 @@ public class Snail : MonoBehaviour
             {
                 GameObject face = hit.collider.gameObject;
                 Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
+
                 if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
-                    && face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
+                    && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
                     StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
 
                     currentTile = face;
-                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
+                    if(face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
+                    {
+                        face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
+                    }
+
 
                     // Iterate through all tiles, and if they are close enough, reveal them
                     UpdateFogOfWar();
+
+                    // Need to proc all ocean tiles globally
+                    UpdateOcean();
                 }
                 
             }
@@ -62,6 +70,28 @@ public class Snail : MonoBehaviour
                 if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                 {
                     face.GetComponent<Tile>().RevealFromFog();
+                }
+            }
+        }
+    }
+
+    void UpdateOcean()
+    {
+        List<List<GameObject>> cubeSides = new List<List<GameObject>>()
+                {
+                    cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
+                };
+
+        // If the face exists within a side
+        foreach (List<GameObject> cubeSide in cubeSides)
+        {
+            foreach (GameObject face in cubeSide)
+            {
+                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                {
+                    {
+                        face.GetComponent<Tile>().ProcTile();
+                    }
                 }
             }
         }
