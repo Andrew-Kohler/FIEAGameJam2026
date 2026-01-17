@@ -56,8 +56,6 @@ public class PivotRotation : MonoBehaviour
     {
         rotation = Vector3.zero; // Reset rotation
 
-        Vector3 mouseOffset = Mouse.current.position.ReadValue() - mouseRef;
-
         int directionConstant = 1;
         if (!GameManager.Instance.GetIsTurningLeft()) { directionConstant = -1; }
 
@@ -78,13 +76,11 @@ public class PivotRotation : MonoBehaviour
         }
 
         transform.Rotate(rotation, Space.Self);
-        mouseRef = Mouse.current.position.ReadValue();
     }
 
     public void Rotate(List<GameObject> side)
     {
         activeSide = side;
-        mouseRef = Mouse.current.position.ReadValue();
         dragging = true;
 
         // Create a vector to rotate around
