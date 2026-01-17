@@ -9,6 +9,8 @@ public class RotationUI : MonoBehaviour
     [SerializeField] private CubeState cubeState;
     [SerializeField] private ReadCube readCube;
 
+    [SerializeField] private GameObject primaryMenu;
+
     //private List<Transform> transformsOfReadCube;
     void Start()
     {
@@ -31,12 +33,22 @@ public class RotationUI : MonoBehaviour
             GameManager.Instance.SetIsTurningLeft(false);
         }
         cubeState.PickUp(GetHighestTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnBotToLeft()
     {
         GameManager.Instance.SetIsTurningLeft(true);
+        if (GetLowestTransform() == cubeState.frontTiles || GetLowestTransform() == cubeState.upTiles || GetLowestTransform() == cubeState.leftTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(false);
+        }
         cubeState.PickUp(GetLowestTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnTopToRight()
@@ -44,15 +56,25 @@ public class RotationUI : MonoBehaviour
         GameManager.Instance.SetIsTurningLeft(false);
         if (GetHighestTransform() == cubeState.backTiles || GetHighestTransform() == cubeState.downTiles || GetHighestTransform() == cubeState.rightTiles)
         {
-            GameManager.Instance.SetIsTurningLeft(false);
+            GameManager.Instance.SetIsTurningLeft(true);
         }
         cubeState.PickUp(GetHighestTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnBotToRight()
     {
         GameManager.Instance.SetIsTurningLeft(false);
+        if (GetLowestTransform() == cubeState.frontTiles || GetLowestTransform() == cubeState.upTiles || GetLowestTransform() == cubeState.leftTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(true);
+        }
         cubeState.PickUp(GetLowestTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
     #endregion
 
@@ -61,28 +83,56 @@ public class RotationUI : MonoBehaviour
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(true);
+        if (GetLeftmostTransform() == cubeState.backTiles || GetLeftmostTransform() == cubeState.downTiles || GetLeftmostTransform() == cubeState.rightTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(false);
+        }
         cubeState.PickUp(GetLeftmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnLeftToDown()
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(false);
+        if (GetLeftmostTransform() == cubeState.backTiles || GetLeftmostTransform() == cubeState.downTiles || GetLeftmostTransform() == cubeState.rightTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(true);
+        }
         cubeState.PickUp(GetLeftmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnRightToUp()
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(true);
+        if (GetRightmostTransform() == cubeState.frontTiles || GetRightmostTransform() == cubeState.upTiles || GetRightmostTransform() == cubeState.leftTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(false);
+        }
         cubeState.PickUp(GetRightmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnRightToDown()
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(false);
+        if (GetRightmostTransform() == cubeState.frontTiles || GetRightmostTransform() == cubeState.upTiles || GetRightmostTransform() == cubeState.leftTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(true);
+        }
         cubeState.PickUp(GetRightmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
     #endregion
 
@@ -91,28 +141,56 @@ public class RotationUI : MonoBehaviour
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(false);
+        if (GetFrontmostTransform() == cubeState.backTiles || GetFrontmostTransform() == cubeState.downTiles || GetFrontmostTransform() == cubeState.rightTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(true);
+        }
         cubeState.PickUp(GetFrontmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnFrontToDown()
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(true);
+        if (GetFrontmostTransform() == cubeState.backTiles || GetFrontmostTransform() == cubeState.downTiles || GetFrontmostTransform() == cubeState.rightTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(false);
+        }
         cubeState.PickUp(GetFrontmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnBackToUp()
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(false);
+        if (GetBackmostTransform() == cubeState.frontTiles || GetBackmostTransform() == cubeState.upTiles || GetBackmostTransform() == cubeState.leftTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(true);
+        }
         cubeState.PickUp(GetBackmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void TurnBackToDown()
     {
         FindFirstObjectByType<ReadCube>().ReadState();
         GameManager.Instance.SetIsTurningLeft(true);
+        if (GetBackmostTransform() == cubeState.frontTiles || GetBackmostTransform() == cubeState.upTiles || GetBackmostTransform() == cubeState.leftTiles)
+        {
+            GameManager.Instance.SetIsTurningLeft(false);
+        }
         cubeState.PickUp(GetBackmostTransform());
+
+        primaryMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
     #endregion
 

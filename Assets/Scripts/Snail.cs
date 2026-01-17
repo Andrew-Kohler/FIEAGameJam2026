@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,10 @@ public class Snail : MonoBehaviour
     [SerializeField] private GameObject currentTile;
 
     [SerializeField] private CubeState cubeState;
+
+    [SerializeField] private float lerpDuration = 1f;
+
+    private bool isLerping = false;
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -17,7 +22,7 @@ public class Snail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && GameManager.Instance.GetIsMovingSnail())
+        if (Mouse.current.leftButton.wasPressedThisFrame && GameManager.Instance.GetIsMovingSnail() && !isLerping)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -27,7 +32,9 @@ public class Snail : MonoBehaviour
                 Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true && face.GetComponent<Tile>().passiveOccupant == null)
                 {
-                    this.transform.position = face.transform.position;
+                    StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
+
+                    //this.transform.position = face.transform.position;
                     currentTile = face;
 
                     // Iterate through all tiles, and if they are close enough, reveal them
@@ -62,5 +69,23 @@ public class Snail : MonoBehaviour
     public GameObject GetCurrentTile()
     {
         return currentTile;
+    }
+
+    IEnumerator DoLerpPosition(Vector3 targetPosition, float duration)
+    {
+        isLerping = true;
+        float time = 0;
+        Vector3 startPosition = transform.position;
+
+        while (time < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+        isLerping = false;
+
+        GameManager.Instance.IncrementTurnCount();
     }
 }

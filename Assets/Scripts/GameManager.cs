@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
     private bool isMovingSnail = true; // Controls whether left mose rotates the cube or moves the snail
     private bool isTurningLeft = true;  // Control variable for planetary rotations going in one of two directions
 
+    private int health = 3;
+    private int maxHealth = 3;
+
+    private int turnCount = 0;
+    private int piecesRetrieved = 0;
+    private int piecesHeld = 0;
+
     public static GameManager Instance
     {
         get
@@ -45,6 +52,11 @@ public class GameManager : MonoBehaviour
         return isMovingSnail;
     }
 
+    public void SetIsMovingSnail(bool set)
+    {
+        isMovingSnail = set;
+    }
+
     public bool GetIsTurningLeft()
     {
         return isTurningLeft;
@@ -53,5 +65,40 @@ public class GameManager : MonoBehaviour
     public void SetIsTurningLeft(bool left)
     {
         isTurningLeft=left;
+    }
+
+    /// <summary>
+    /// Setter for health
+    /// </summary>
+    /// <param name="health"></param>
+    public void SetHealth(int health)
+    {
+        this.health = health;
+    }
+
+    /// <summary>
+    /// Gettter for health
+    /// </summary>
+    /// <returns></returns>
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public void IncrementTurnCount()
+    {
+        turnCount++;
+    }
+
+    public int GetTurnCount()
+    {
+        return turnCount;
+    }
+
+    public void ResetAllValues()
+    {
+        health = maxHealth;
+        turnCount = 0;
+        piecesRetrieved = 0;
     }
 }
