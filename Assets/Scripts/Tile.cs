@@ -19,8 +19,8 @@ public class Tile : MonoBehaviour
     [Header("Volcano Data")]
     private float chanceToMeteor = .5f;
 
-    GameObject currentPassive;
-    GameObject currentActive;
+    public GameObject currentPassive;
+    public GameObject currentActive;
 
     void Start()
     {
@@ -37,16 +37,36 @@ public class Tile : MonoBehaviour
         if (isInFogOfWar)
         {
             isInFogOfWar = false;
-            if (passiveOccupant != null)
+            if (tileType == TileType.Ocean)
             {
-                if (currentPassive != null) Destroy(currentPassive);
-               currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                if (traversable)
+                {
+                    if (currentPassive != null) Destroy(currentPassive);
+                    if (currentActive != null) Destroy(currentActive);
+                    currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                else
+                {
+                    if (currentPassive != null) Destroy(currentPassive);
+                    if (currentActive != null) Destroy(currentActive);
+                    currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
             }
-            if (activeOccupant != null)
+            else
             {
-                if (currentActive != null) Destroy(currentActive);
-                currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                if (passiveOccupant != null)
+                {
+                    if (currentPassive != null) Destroy(currentPassive);
+                    currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                if (activeOccupant != null)
+                {
+                    if (currentActive != null) Destroy(currentActive);
+                    currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
             }
+
+            
         }
 
         // Ok, the ocean tiles essentially have two states and are on their own timer
@@ -140,11 +160,12 @@ public class Tile : MonoBehaviour
             case TileType.Wheat:
                 // No effects proc on the wheat tile
                 break;
-            case TileType.Ocean:
+            case TileType.Ocean: // Called when all tiles across the world are proc'd
                 turnsUntilSwapCounter--;
 
                 if(turnsUntilSwapCounter == 0)
                 {
+                    turnsUntilSwapCounter = turnsUntilSwap;
                     traversable = !traversable;
                     if (!isInFogOfWar)
                     {
@@ -153,10 +174,12 @@ public class Tile : MonoBehaviour
                         if (!traversable) // The passive is the water, the active is the one you can stand on
                         {
                             if (currentPassive != null) Destroy(currentPassive);
+                            if (currentActive != null) Destroy(currentActive);
                             currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                         }
                         else
                         {
+                            if (currentPassive != null) Destroy(currentPassive);
                             if (currentActive != null) Destroy(currentActive);
                             currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                         }

@@ -4982,13 +4982,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeState: {fileID: 485359660}
   volcanoPrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
-  numberOfCacti: 2
   numberOfTrees: 3
   numberOfFogBushes: 2
   treePrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
   bushPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
+  oceanRisenPrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
+  oceanRecededPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
   numberOfIceTiles: 2
   numberOfRocks: 3
+  numberOfCacti: 2
 --- !u!4 &1406528990
 Transform:
   m_ObjectHideFlags: 0
