@@ -6,7 +6,7 @@ using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class Snail : MonoBehaviour
 {
-    private int layerMask = 1 << 8;
+    private int layerMask = (1 << 8);
     [SerializeField] private GameObject currentTile;
 
     [SerializeField] private CubeState cubeState;
@@ -30,12 +30,13 @@ public class Snail : MonoBehaviour
             {
                 GameObject face = hit.collider.gameObject;
                 Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
-                if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true && face.GetComponent<Tile>().passiveOccupant == null)
+                if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
+                    && face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
                     StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
 
-                    //this.transform.position = face.transform.position;
                     currentTile = face;
+                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
                     // Iterate through all tiles, and if they are close enough, reveal them
                     UpdateFogOfWar();
