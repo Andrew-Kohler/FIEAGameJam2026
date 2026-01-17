@@ -4444,12 +4444,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeState: {fileID: 485359660}
-  volcanoPrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
+  volcanoPrefab: {fileID: 304155157287545397, guid: 36527b65e1b23c64a9d7ecb047af98f3, type: 3}
   numberOfCacti: 2
   numberOfTrees: 3
   numberOfFogBushes: 2
-  treePrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
-  bushPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
+  treePrefab: {fileID: 304155157287545397, guid: d2fab05490d19e44d96b6ac47c575c30, type: 3}
+  bushPrefab: {fileID: 304155157287545397, guid: 5f78c776199ee914f9fe0b77cfdf4fe6, type: 3}
   numberOfIceTiles: 2
   numberOfRocks: 3
 --- !u!4 &1406528990
@@ -7618,7 +7618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864750230352528561, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5864750230352528561, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7626,7 +7626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864750230352528561, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5864750230352528561, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7638,7 +7638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864750230352528561, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5864750230352528561, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
