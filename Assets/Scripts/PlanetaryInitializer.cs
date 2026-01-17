@@ -131,6 +131,8 @@ public class PlanetaryInitializer : MonoBehaviour
                 {
                     float chance = Random.Range(0, 1.001f);
                     tiles[m].GetComponent<Tile>().turnsUntilSwapCounter = tiles[m].GetComponent<Tile>().turnsUntilSwap;
+                    tiles[m].GetComponent<Tile>().activeOccupant = oceanRecededPrefab;
+                    tiles[m].GetComponent<Tile>().passiveOccupant = oceanRisenPrefab;
                     if (chance < .5f)
                     {
                         tiles[m].GetComponent<Tile>().traversable = false;
