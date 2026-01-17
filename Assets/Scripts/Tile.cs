@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public enum TileType { Wheat, Volcano, Snow, Ocean, Desert, Jungle};
+    public enum TileType { Unassigned, Wheat, Volcano, Snow, Ocean, Desert, Jungle};
     public TileType tileType; // What biome this tile occupies
 
     public bool isInFogOfWar = true;
