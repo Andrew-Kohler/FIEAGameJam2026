@@ -14,6 +14,8 @@ public class Snail : MonoBehaviour
     [SerializeField] private float lerpDuration = 1f;
 
     private bool isLerping = false;
+
+    public int PieceCount = 0;
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -22,7 +24,7 @@ public class Snail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && GameManager.Instance.GetIsMovingSnail() && !isLerping)
+        if (Mouse.current.leftButton.wasPressedThisFrame && !isLerping && !GameManager.Instance.GetIsRotatingPiece())
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -42,13 +44,23 @@ public class Snail : MonoBehaviour
                         face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
                     }
 
-
                     // Iterate through all tiles, and if they are close enough, reveal them
                     UpdateFogOfWar();
 
                     // Need to proc all ocean tiles globally
                     UpdateOcean();
                     UpdateDesert();
+
+                    if (face.GetComponent<Tile>().hasRocket)
+                    {
+                        if(PieceCount > 0)
+                        {
+                            for(int i = 0; i < PieceCount; i++)
+                            {
+
+                            }
+                        }
+                    }
                 }
                 
             }

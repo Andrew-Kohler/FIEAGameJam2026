@@ -23,6 +23,8 @@ public class Tile : MonoBehaviour
     public GameObject currentPassive;
     public GameObject currentActive;
 
+    public bool hasRocket = false;
+
     void Start()
     {
         

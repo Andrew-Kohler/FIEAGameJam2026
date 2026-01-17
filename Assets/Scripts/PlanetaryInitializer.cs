@@ -27,6 +27,9 @@ public class PlanetaryInitializer : MonoBehaviour
 
     [Header("Desert Init Params")]
     [SerializeField] private int numberOfCacti = 2;
+
+    [Header("Collectable Init Params")]
+    [SerializeField] private GameObject shipPartPrefab;
     void Start()
     {
         
@@ -53,6 +56,8 @@ public class PlanetaryInitializer : MonoBehaviour
             InitializeIndividualBiome(listOfTypes[index], cubeSides[i]);
             listOfTypes.RemoveAt(index); // Remove as we go to prevent dupes
         }
+
+
 
     }
 
