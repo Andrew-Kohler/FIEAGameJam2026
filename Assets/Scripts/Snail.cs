@@ -35,8 +35,8 @@ public class Snail : MonoBehaviour
                 {
                     StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
 
-                    //this.transform.position = face.transform.position;
                     currentTile = face;
+                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
                     // Iterate through all tiles, and if they are close enough, reveal them
                     UpdateFogOfWar();
