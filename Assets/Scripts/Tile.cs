@@ -106,22 +106,22 @@ public class Tile : MonoBehaviour
         switch (type)
         {
             case TileType.Volcano:
-                GetComponent<MeshRenderer>().material.color = Color.red;
+                GetComponent<MeshRenderer>().material.color = Color.darkRed;
                 break;
             case TileType.Snow:
-                GetComponent<MeshRenderer>().material.color = Color.white;
+                GetComponent<MeshRenderer>().material.color = Color.whiteSmoke;
                 break;
             case TileType.Jungle:
-                GetComponent<MeshRenderer>().material.color = Color.green;
+                GetComponent<MeshRenderer>().material.color = Color.darkOliveGreen;
                 break;
             case TileType.Wheat:
-                GetComponent<MeshRenderer>().material.color = Color.yellow;
+                GetComponent<MeshRenderer>().material.color = Color.goldenRod;
                 break;
             case TileType.Ocean:
-                GetComponent<MeshRenderer>().material.color = Color.blue;
+                GetComponent<MeshRenderer>().material.color = Color.cornflowerBlue;
                 break;
             case TileType.Desert:
-                GetComponent<MeshRenderer>().material.color = Color.orange;
+                GetComponent<MeshRenderer>().material.color = Color.orangeRed;
                 break;
             default:
                 break;
