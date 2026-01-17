@@ -9,6 +9,15 @@ public class PrimaryUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI healthTempText;
     [SerializeField] private TextMeshProUGUI turnTempText;
+
+    public GameObject crackedShell1;
+    public GameObject crackedShell2;
+    public GameObject crackedShell3;
+
+    public GameObject icyShell1;
+    public GameObject icyShell2;
+    public GameObject icyShell3;
+
     void Start()
     {
         
@@ -18,6 +27,18 @@ public class PrimaryUI : MonoBehaviour
     void Update()
     {
         healthTempText.text = "Health = " + GameManager.Instance.GetHealth();
+        if (GameManager.Instance.GetHealth() == 2 )
+        {
+            crackedShell3.SetActive(true);
+        }
+        if (GameManager.Instance.GetHealth() == 1)
+        {
+            crackedShell2.SetActive(true);
+        }
+        if (GameManager.Instance.GetHealth() == 0)
+        {
+            crackedShell1.SetActive(true);
+        }
         turnTempText.text = "Turn " + GameManager.Instance.GetTurnCount();
     }
 

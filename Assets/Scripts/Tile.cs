@@ -13,8 +13,8 @@ public class Tile : MonoBehaviour
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
 
     [Header("Ocean Data")]
-    private int turnsUntilSwap = 2;
-    private int turnsUntilSwapCounter;
+    public int turnsUntilSwap = 2;
+    public int turnsUntilSwapCounter;
 
     [Header("Volcano Data")]
     private float chanceToMeteor = .5f;
@@ -30,7 +30,6 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void RevealFromFog()
@@ -41,14 +40,19 @@ public class Tile : MonoBehaviour
             if (passiveOccupant != null)
             {
                 if (currentPassive != null) Destroy(currentPassive);
-               currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.localRotation, this.transform.parent);
+               currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
             }
             if (activeOccupant != null)
             {
                 if (currentActive != null) Destroy(currentActive);
-                currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.localRotation, this.transform.parent);
+                currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
             }
         }
+
+        // Ok, the ocean tiles essentially have two states and are on their own timer
+        // When their turn counter ticks to 0, they change that state
+        // However, we can't showcase that state change until they're revealed
+        // So just have that as a conditional
         
     }
 
@@ -137,7 +141,27 @@ public class Tile : MonoBehaviour
                 // No effects proc on the wheat tile
                 break;
             case TileType.Ocean:
-                // No INDIVIDUAL effects proc on the water tile
+                turnsUntilSwapCounter--;
+
+                if(turnsUntilSwapCounter == 0)
+                {
+                    traversable = !traversable;
+                    if (!isInFogOfWar)
+                    {
+                        SendToFog();
+                        isInFogOfWar = false;
+                        if (!traversable) // The passive is the water, the active is the one you can stand on
+                        {
+                            if (currentPassive != null) Destroy(currentPassive);
+                            currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                        }
+                        else
+                        {
+                            if (currentActive != null) Destroy(currentActive);
+                            currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                        }
+                    }
+                }
                 break;
             case TileType.Desert:
                 // No INDIVIDUAL effects proc on the desert tile

@@ -11,18 +11,22 @@ public class PlanetaryInitializer : MonoBehaviour
     [Header("Volcano Init Params")]
     [SerializeField] private GameObject volcanoPrefab;
 
-    [Header("Desert Init Params")]
-    [SerializeField] private int numberOfCacti = 2;
-
     [Header("Jungle Init Params")]
     [SerializeField] private int numberOfTrees = 3;
     [SerializeField] private int numberOfFogBushes = 2;
     [SerializeField] private GameObject treePrefab;
     [SerializeField] private GameObject bushPrefab;
 
+    [Header("Ocean Init Params")]
+    [SerializeField] private GameObject oceanRisenPrefab;
+    [SerializeField] private GameObject oceanRecededPrefab;
+
     [Header("Snow Init Params")]
     [SerializeField] private int numberOfIceTiles = 2;
     [SerializeField] private int numberOfRocks = 3;
+
+    [Header("Desert Init Params")]
+    [SerializeField] private int numberOfCacti = 2;
     void Start()
     {
         
@@ -123,6 +127,19 @@ public class PlanetaryInitializer : MonoBehaviour
             case Tile.TileType.Desert:
                 break;
             case Tile.TileType.Ocean:
+                for (int m = 0; m < tiles.Count; m++)
+                {
+                    float chance = Random.Range(0, 1.001f);
+                    tiles[m].GetComponent<Tile>().turnsUntilSwapCounter = tiles[m].GetComponent<Tile>().turnsUntilSwap;
+                    if (chance < .5f)
+                    {
+                        tiles[m].GetComponent<Tile>().traversable = false;
+                    }
+                    else
+                    {
+                        tiles[m].GetComponent<Tile>().traversable = true;
+                    }
+                }
                 break;
             default: break;
         }
