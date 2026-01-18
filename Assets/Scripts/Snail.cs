@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class Snail : MonoBehaviour
@@ -40,7 +41,7 @@ public class Snail : MonoBehaviour
                 GameObject face = hit.collider.gameObject;
                 //UnityEngine.Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
-                    && face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
+                    && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
                     float yDistance = currentTile.transform.position.y - face.transform.position.y;
                     float xDistance = currentTile.transform.position.x - face.transform.position.x;
@@ -74,19 +75,27 @@ public class Snail : MonoBehaviour
                     UpdateOcean();
                     UpdateDesert();
 
+                    if (face.GetComponent<Tile>().collectibleOccupant)
+                    {
+                        face.GetComponent<Tile>().HideShipPiece();
+                        GameManager.Instance.AddToPiecesHeld();
+                    }
+
                     if (face.GetComponent<Tile>().hasRocket)
                     {
                         model.SetActive(false);
                         if(GameManager.Instance.GetPiecesHeld() > 0)
                         {
-                            for(int i = 0; i < PieceCount; i++)
+                            int pieces = GameManager.Instance.GetPiecesHeld();
+                            for (int i = 0; i < pieces; i++)
                             {
                                 GameManager.Instance.SubtractFromPiecesHeld();
                                 GameManager.Instance.AddToPiecesRetrieved();
                             }
                             if(GameManager.Instance.GetPiecesRetrieved() == 3)
                             {
-
+                                GameManager.Instance.ResetAllValues();
+                                SceneManager.LoadScene(0);
                             }
                         }
                     }

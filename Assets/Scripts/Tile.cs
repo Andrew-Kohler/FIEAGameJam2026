@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Rendering.InspectorCurveEditor;
+using UnityEngine.SceneManagement;
 
 public class Tile : MonoBehaviour
 {
@@ -98,6 +98,15 @@ public class Tile : MonoBehaviour
             currentCollectible.GetComponent<Animator>().Play("Shrink", 0, 0);
         }
         isInFogOfWar = true;
+    }
+
+    public void HideShipPiece()
+    {
+        if (collectibleOccupant != null)
+        {
+            Destroy(currentCollectible);
+            collectibleOccupant = null;
+        }
     }
 
     public void updateDesert()

@@ -2844,13 +2844,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743722261}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.075774804, y: 0.90558696, z: -0.18293664, w: -0.37510616}
+  m_LocalRotation: {x: -0.0728008, y: 0.8993904, z: -0.18414038, w: -0.38972986}
   m_LocalPosition: {x: 2.7, y: 3.49, z: 4.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22.841, y: 225, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.828, y: 227.015, z: 0.782}
 --- !u!114 &743722265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4923,12 +4923,17 @@ MonoBehaviour:
   volcanoPrefab: {fileID: 304155157287545397, guid: 36527b65e1b23c64a9d7ecb047af98f3, type: 3}
   numberOfTrees: 3
   numberOfFogBushes: 2
-  treePrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
-  bushPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
+  treePrefab: {fileID: 304155157287545397, guid: d2fab05490d19e44d96b6ac47c575c30, type: 3}
+  bushPrefab: {fileID: 304155157287545397, guid: eca3950a17dbfe644a5ce0cead20e610, type: 3}
   oceanRisenPrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
   oceanRecededPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
   numberOfIceTiles: 2
   numberOfRocks: 3
+  snowBlockerPrefabs:
+  - {fileID: 304155157287545397, guid: 9eb78334f2587594db55f07ce90a30d6, type: 3}
+  - {fileID: 304155157287545397, guid: 47596bb01c197d5408dbabbf792c476a, type: 3}
+  - {fileID: 304155157287545397, guid: 4bb9655c34d00b4408db64164af0420e, type: 3}
+  snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
   numberOfCacti: 2
   shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
   shipWindowPartPrefab: {fileID: 304155157287545397, guid: df959e01bb85b7a46aa6edfd5bb97ad5, type: 3}
