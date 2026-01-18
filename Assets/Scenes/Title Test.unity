@@ -4474,6 +4474,7 @@ MonoBehaviour:
   rightTiles: []
   upTiles: []
   downTiles: []
+  snail: {fileID: 0}
 --- !u!95 &485359661
 Animator:
   serializedVersion: 7
@@ -6655,6 +6656,8 @@ MonoBehaviour:
   interactButtonText: {fileID: 0}
   healthTempText: {fileID: 598386494}
   turnTempText: {fileID: 312323323}
+  healthContainer: {fileID: 0}
+  helpButton: {fileID: 0}
   crackedShell1: {fileID: 1136543513}
   crackedShell2: {fileID: 1863500486}
   crackedShell3: {fileID: 845990235}
@@ -7739,6 +7742,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825535530}
   m_CullTransparentMesh: 1
+--- !u!1001 &831986197
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0059067
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9025655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9907971
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791378004834060284, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
+      propertyPath: m_Name
+      value: Lava 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73f8bd36fe21fcd4a9fd1bee2ae61f87, type: 3}
 --- !u!1 &845990235
 GameObject:
   m_ObjectHideFlags: 0
@@ -11831,6 +11891,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipboard: {fileID: 1390417222}
   boardAnim: {fileID: 1390417225}
+  checkOne: {fileID: 0}
+  checkTwo: {fileID: 0}
+  checkThree: {fileID: 0}
   isOpen: 0
 --- !u!95 &1390417225
 Animator:
@@ -15321,6 +15384,63 @@ RectTransform:
   m_AnchoredPosition: {x: 657, y: 351}
   m_SizeDelta: {x: 367.17014, y: 67.49997}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1965347130
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734564971023123945, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791378004834060284, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
+      propertyPath: m_Name
+      value: Lava Tile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42a070fb3b0dcff4da268254f4f9e317, type: 3}
 --- !u!1 &1966396137
 GameObject:
   m_ObjectHideFlags: 0
@@ -17098,3 +17218,5 @@ SceneRoots:
   - {fileID: 797323345}
   - {fileID: 639208562}
   - {fileID: 1944744616}
+  - {fileID: 1965347130}
+  - {fileID: 831986197}
