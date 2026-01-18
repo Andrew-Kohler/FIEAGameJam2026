@@ -227,16 +227,11 @@ public class Tile : MonoBehaviour
                     FindFirstObjectByType<Snail>().isFrosted = false;
                     GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
                 }
-                else if(FindFirstObjectByType<Snail>().isCold)
-                {
-                    FindFirstObjectByType<Snail>().isFrosted = true;
-                    FindFirstObjectByType<Snail>().isCold = false;
-                }
                 else
                 {
-                    FindFirstObjectByType<Snail>().isCold = true;
+                    FindFirstObjectByType<Snail>().isFrosted = true;
                 }
-                    break;
+                break;
             case TileType.Jungle:
                 if(activeOccupant != null)
                 {
@@ -269,37 +264,11 @@ public class Tile : MonoBehaviour
                 FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Desert:
-                /*if (currentActive != null)
+                if (activeOccupant != null)
                 {
-                    Destroy(currentActive);
-                    GameManager.Instance.SetDustDevilCount(GameManager.Instance.GetDustDevilCount() - 1);
-                    // How do we get the player to a random, valid tile
-
-                    CubeState cubeState = FindFirstObjectByType<CubeState>();
-
-                    List<GameObject> validTiles = new List<GameObject>();
-
-                    List<List<GameObject>> cubeSides = new List<List<GameObject>>()
-                    {
-                        cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
-                    };
-                    foreach (List<GameObject> faces in cubeSides)
-                    {
-                        foreach (GameObject face in faces)
-                        {
-                            if (face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != TileType.Desert)
-                            {
-                               validTiles.Add(face);
-                            }
-                        }
-                    }
-
-                    int index = Random.Range(0, validTiles.Count);
-
-                    // Waiting until Chrys is done to finish implementing this
-                }*/
-                //FindFirstObjectByType<Snail>().isFrosted = false;
-
+                    GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
+                }
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             default:
                 break;
