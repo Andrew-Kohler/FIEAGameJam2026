@@ -10642,7 +10642,7 @@ MonoBehaviour:
   numberOfFogBushes: 2
   treePrefab: {fileID: 304155157287545397, guid: d2fab05490d19e44d96b6ac47c575c30, type: 3}
   bushPrefab: {fileID: 304155157287545397, guid: eca3950a17dbfe644a5ce0cead20e610, type: 3}
-  oceanRisenPrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
+  oceanRisenPrefab: {fileID: 304155157287545397, guid: 6a915eeb48e1caf4d85026a35ffbe52e, type: 3}
   oceanRecededPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
   numberOfRocks: 3
   snowBlockerPrefabs:

@@ -72,7 +72,7 @@ public class Snail : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f, layerMask))
             {
                 GameObject face = hit.collider.gameObject;
-                //UnityEngine.Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
+                //UnityEngine.Debug.Log("ANDREW: " + Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true
                     && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
@@ -206,14 +206,16 @@ public class Snail : MonoBehaviour
                             break;
 
                     }
+
+                    StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
+
+                    if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                        currentTile = face;
+                    //face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
+
+                    StartCoroutine(TurnOrder(face));
                 }
-                StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
-
-                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
-                    currentTile = face;
-                face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
-
-                StartCoroutine(TurnOrder(face));
+                
 
             }
         }
@@ -338,11 +340,11 @@ public class Snail : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.2f);
             UpdateOcean();
             UpdateDesert();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.3f);
             face.GetComponent<Tile>().ProcTile();
 
             yield return new WaitForSeconds(1f);

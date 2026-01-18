@@ -22,7 +22,7 @@ public class Tile : MonoBehaviour
     public int turnsUntilSwapCounter;
 
     [Header("Volcano Data")]
-    private float chanceToMeteor = .5f;
+    private float chanceToMeteor = .3f;
     [SerializeField] private GameObject meteor;
 
     public GameObject currentPassive;
