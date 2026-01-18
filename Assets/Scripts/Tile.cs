@@ -222,6 +222,7 @@ public class Tile : MonoBehaviour
 
                 if(turnsUntilSwapCounter == 0)
                 {
+                    Debug.Log("Ocean motion");
                     turnsUntilSwapCounter = turnsUntilSwap;
                     traversable = !traversable;
                     if (!isInFogOfWar)
