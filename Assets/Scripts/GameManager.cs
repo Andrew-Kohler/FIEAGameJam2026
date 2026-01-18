@@ -49,14 +49,7 @@ public class GameManager : MonoBehaviour
         {
             isMovingSnail = !isMovingSnail;
         }
-        if (health == 0)
-        {
-            SceneManager.LoadScene(1);
-        }
-        if (piecesRetrieved == 3)
-        {
-            SceneManager.LoadScene(0);
-        }
+       
     }
 
     public bool GetIsMovingSnail()
@@ -86,6 +79,11 @@ public class GameManager : MonoBehaviour
     public void SetHealth(int health)
     {
         this.health = health;
+        if (health == 0)
+        {
+            SceneManager.LoadScene(1);
+            Timer.isTimerActive = false;
+        }
     }
 
     /// <summary>
@@ -140,6 +138,11 @@ public class GameManager : MonoBehaviour
     public void AddToPiecesRetrieved()
     {
         piecesRetrieved++;
+        if (piecesRetrieved == 3)
+        {
+            SceneManager.LoadScene(0);
+            Timer.isTimerActive = false;
+        }
     }
 
     public void AddToPiecesHeld()
