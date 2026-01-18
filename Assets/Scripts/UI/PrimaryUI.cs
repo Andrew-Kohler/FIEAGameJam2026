@@ -13,6 +13,10 @@ public class PrimaryUI : MonoBehaviour
     [SerializeField] private GameObject healthContainer;
     [SerializeField] private GameObject helpButton;
 
+    [SerializeField] private GameObject normalRotateText;
+    [SerializeField] private GameObject challengeRotateText;
+    [SerializeField] private TextMeshProUGUI challengeRotateTextMesh;
+
     public GameObject crackedShell1;
     public GameObject crackedShell2;
     public GameObject crackedShell3;
@@ -70,6 +74,18 @@ public class PrimaryUI : MonoBehaviour
             icyShell3.SetActive(false);
         }
         turnTempText.text = "Turn " + GameManager.Instance.GetTurnCount();
+
+        if (GameManager.Instance.challengeMode)
+        {
+            normalRotateText.SetActive(false);
+            challengeRotateText.SetActive(true);
+            challengeRotateTextMesh.text = GameManager.Instance.challengeModeRotations.ToString();
+        }
+        else
+        {
+            normalRotateText.SetActive(true);
+            challengeRotateText.SetActive(false);
+        }
     }
 
     /*public void ToggleInteractMode() // Switches between being able to drag to rotate the cube and click to move the snail
@@ -89,10 +105,24 @@ public class PrimaryUI : MonoBehaviour
     {
         if (!GameManager.Instance.GetIsRotatingPiece())
         {
-            rotationMenu.SetActive(true);
-            GameManager.Instance.SetRotatingPiece(true);
-            helpButton.SetActive(false);
-            healthContainer.SetActive(false);
+            if (GameManager.Instance.challengeMode) // In challenge mode, you gotta PAY UP!
+            {
+                if(GameManager.Instance.challengeModeRotations > 0)
+                {
+                    rotationMenu.SetActive(true);
+                    GameManager.Instance.SetRotatingPiece(true);
+                    helpButton.SetActive(false);
+                    healthContainer.SetActive(false);
+                }
+            }
+            else
+            {
+                rotationMenu.SetActive(true);
+                GameManager.Instance.SetRotatingPiece(true);
+                helpButton.SetActive(false);
+                healthContainer.SetActive(false);
+            }
+
         }
         else
         {
