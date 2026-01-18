@@ -139,6 +139,34 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public void TickDownOceanTile()
+    {
+        turnsUntilSwapCounter--;
+
+        if (turnsUntilSwapCounter == 0)
+        {
+            turnsUntilSwapCounter = turnsUntilSwap;
+            traversable = !traversable;
+            if (!isInFogOfWar)
+            {
+                //SendToFog();
+                //isInFogOfWar = false;
+                if (currentPassive != null) Destroy(currentPassive);
+                if (currentActive != null) Destroy(currentActive);
+                if (!traversable) // The passive is the water, the active is the one you can stand on
+                {
+                    Debug.Log("PASSIVE SPAWN FROM REFRESH");
+                    currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                else
+                {
+                    Debug.Log("ACTIVE SPAWN FROM REFRESH");
+                    currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+            }
+        }
+    }
+
     public void AssignType(TileType type)
     {
         tileType = type;
@@ -221,35 +249,12 @@ public class Tile : MonoBehaviour
                 // No effects proc on the wheat tile
                 FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
-            case TileType.Ocean: // Called when all tiles across the world are proc'd
-                turnsUntilSwapCounter--;
-
-                if(turnsUntilSwapCounter == 0)
-                {
-                    turnsUntilSwapCounter = turnsUntilSwap;
-                    traversable = !traversable;
-                    if (!isInFogOfWar)
-                    {
-                        //SendToFog();
-                        //isInFogOfWar = false;
-                        if (currentPassive != null) Destroy(currentPassive);
-                        if (currentActive != null) Destroy(currentActive);
-                        if (!traversable) // The passive is the water, the active is the one you can stand on
-                        {
-                            Debug.Log("PASSIVE SPAWN FROM REFRESH");
-                            currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
-                        }
-                        else
-                        {
-                            Debug.Log("ACTIVE SPAWN FROM REFRESH");
-                            currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
-                        }
-                    }
-                }
-                //FindFirstObjectByType<Snail>().isFrosted = false;
+            case TileType.Ocean: 
+                turnsUntilSwapCounter++;
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Desert:
-                if (currentActive != null)
+                /*if (currentActive != null)
                 {
                     Destroy(currentActive);
                     GameManager.Instance.SetDustDevilCount(GameManager.Instance.GetDustDevilCount() - 1);
@@ -277,7 +282,7 @@ public class Tile : MonoBehaviour
                     int index = Random.Range(0, validTiles.Count);
 
                     // Waiting until Chrys is done to finish implementing this
-                }
+                }*/
                 //FindFirstObjectByType<Snail>().isFrosted = false;
 
                 break;
