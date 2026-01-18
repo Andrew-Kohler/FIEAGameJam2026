@@ -188,7 +188,7 @@ public class Snail : MonoBehaviour
 
                             break;
                         case 2:
-                            //UnityEngine.Debug.Log("RIGHT!!!!");
+                            UnityEngine.Debug.Log("RIGHT!!!!");
 
                             if (xDistance >= 0.9)
                             {
