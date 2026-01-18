@@ -4906,7 +4906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &496273269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4921,7 +4921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeState: {fileID: 485359660}
   readCube: {fileID: 1859107599}
-  primaryMenu: {fileID: 656320997}
+  primaryMenu: {fileID: 656320999}
 --- !u!224 &496273270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6777,12 +6777,14 @@ MonoBehaviour:
   interactButtonText: {fileID: 0}
   healthTempText: {fileID: 598386494}
   turnTempText: {fileID: 312323323}
+  healthContainer: {fileID: 115082740}
+  helpButton: {fileID: 499414075}
   crackedShell1: {fileID: 1136543513}
   crackedShell2: {fileID: 1863500486}
   crackedShell3: {fileID: 845990235}
-  icyShell1: {fileID: 0}
-  icyShell2: {fileID: 0}
-  icyShell3: {fileID: 0}
+  icyShell1: {fileID: 825535530}
+  icyShell2: {fileID: 1381238160}
+  icyShell3: {fileID: 1246684842}
 --- !u!1 &684915128
 GameObject:
   m_ObjectHideFlags: 0
@@ -12162,7 +12164,7 @@ MonoBehaviour:
   - {fileID: 304155157287545397, guid: 4bb9655c34d00b4408db64164af0420e, type: 3}
   snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
   numberOfCacti: 2
-  wheatPrefab: {fileID: 0}
+  wheatPrefab: {fileID: 304155157287545397, guid: dc99c5932a326f24e9ba68d24da84c3b, type: 3}
   shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
   shipWindowPartPrefab: {fileID: 304155157287545397, guid: df959e01bb85b7a46aa6edfd5bb97ad5, type: 3}
   shipThingyPartPrefab: {fileID: 304155157287545397, guid: 21af0029027ac6046a2474c685438330, type: 3}
