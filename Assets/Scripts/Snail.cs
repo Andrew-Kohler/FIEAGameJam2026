@@ -16,6 +16,8 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private float lerpDuration = 1f;
 
+    [SerializeField] private GameObject model;
+
     private bool isLerping = false;
 
     public int PieceCount = 0;
@@ -74,13 +76,23 @@ public class Snail : MonoBehaviour
 
                     if (face.GetComponent<Tile>().hasRocket)
                     {
-                        if(PieceCount > 0)
+                        model.SetActive(false);
+                        if(GameManager.Instance.GetPiecesHeld() > 0)
                         {
                             for(int i = 0; i < PieceCount; i++)
+                            {
+                                GameManager.Instance.SubtractFromPiecesHeld();
+                                GameManager.Instance.AddToPiecesRetrieved();
+                            }
+                            if(GameManager.Instance.GetPiecesRetrieved() == 3)
                             {
 
                             }
                         }
+                    }
+                    else
+                    {
+                        model.SetActive(true);
                     }
                 }
             }

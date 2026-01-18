@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
 
     public GameObject passiveOccupant; // Things that are intraversable. The snail cannot move onto a space with a passive occupant.
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
+    public GameObject collectibleOccupant;
 
     [Header("Ocean Data")]
     public int turnsUntilSwap = 2;
@@ -22,6 +23,7 @@ public class Tile : MonoBehaviour
 
     public GameObject currentPassive;
     public GameObject currentActive;
+    public GameObject currentCollectible;
 
     public bool hasRocket = false;
 
@@ -54,6 +56,10 @@ public class Tile : MonoBehaviour
                     if (currentActive != null) Destroy(currentActive);
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
+                if (collectibleOccupant != null)
+                {
+                    currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
             }
             else
             {
@@ -66,6 +72,11 @@ public class Tile : MonoBehaviour
                 {
                     if (currentActive != null) Destroy(currentActive);
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                if (collectibleOccupant != null)
+                {
+                    if (currentCollectible != null) Destroy(currentCollectible);
+                    currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }  
         }
@@ -81,6 +92,10 @@ public class Tile : MonoBehaviour
         if (currentActive != null)
         {
             currentActive.GetComponent<Animator>().Play("Shrink",0,0);
+        }
+        if (currentCollectible != null)
+        {
+            currentCollectible.GetComponent<Animator>().Play("Shrink", 0, 0);
         }
         isInFogOfWar = true;
     }

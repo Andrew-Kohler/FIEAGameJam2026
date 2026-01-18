@@ -4840,6 +4840,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92249409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1398322747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4807828697536328330, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+  m_PrefabInstance: {fileID: 5758911243268826808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1406528988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,6 +4885,10 @@ MonoBehaviour:
   numberOfIceTiles: 2
   numberOfRocks: 3
   numberOfCacti: 2
+  shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
+  shipWindowPartPrefab: {fileID: 304155157287545397, guid: df959e01bb85b7a46aa6edfd5bb97ad5, type: 3}
+  shipThingyPartPrefab: {fileID: 304155157287545397, guid: 21af0029027ac6046a2474c685438330, type: 3}
+  crashedShipPrefab: {fileID: 304155157287545397, guid: a18b855a43ccbf246a6e590744388178, type: 3}
 --- !u!4 &1406528990
 Transform:
   m_ObjectHideFlags: 0
@@ -8165,6 +8174,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 1398322747}
     - target: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: cubeState
       value: 

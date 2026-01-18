@@ -29,7 +29,10 @@ public class PlanetaryInitializer : MonoBehaviour
     [SerializeField] private int numberOfCacti = 2;
 
     [Header("Collectable Init Params")]
-    [SerializeField] private GameObject shipPartPrefab;
+    [SerializeField] private GameObject shipFinPartPrefab;
+    [SerializeField] private GameObject shipWindowPartPrefab;
+    [SerializeField] private GameObject shipThingyPartPrefab;
+    [SerializeField] private GameObject crashedShipPrefab;
     void Start()
     {
         
@@ -57,7 +60,30 @@ public class PlanetaryInitializer : MonoBehaviour
             listOfTypes.RemoveAt(index); // Remove as we go to prevent dupes
         }
 
+        // Get a list of valid tiles for the ship pieces to spawn on
+        List<GameObject> validTiles = new List<GameObject>();
 
+        foreach (List<GameObject> faces in cubeSides)
+        {
+            foreach(GameObject face in faces)
+            {
+                if(face.GetComponent<Tile>().tileType == Tile.TileType.Ocean || (face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Wheat)){
+                    validTiles.Add(face);
+                }
+            }
+        }
+
+        int randomIndex1 = Random.Range(0, validTiles.Count);
+        validTiles[randomIndex1].GetComponent<Tile>().collectibleOccupant = shipFinPartPrefab;
+        validTiles.RemoveAt(randomIndex1);
+
+        int randomIndex2 = Random.Range(0, validTiles.Count);
+        validTiles[randomIndex2].GetComponent<Tile>().collectibleOccupant = shipThingyPartPrefab;
+        validTiles.RemoveAt(randomIndex2);
+
+        int randomIndex3 = Random.Range(0, validTiles.Count);
+        validTiles[randomIndex3].GetComponent<Tile>().collectibleOccupant = shipWindowPartPrefab;
+        validTiles.RemoveAt(randomIndex3);
 
     }
 
@@ -77,6 +103,14 @@ public class PlanetaryInitializer : MonoBehaviour
         switch (biomeType)
         {
             case Tile.TileType.Wheat:
+                for (int i = 0; i < tiles.Count; i++)
+                {
+                    if (i == 4)
+                    {
+                        tiles[4].GetComponent<Tile>().activeOccupant = crashedShipPrefab;
+                        tiles[4].GetComponent<Tile>().hasRocket = true;
+                    }
+                }
                 break;
             case Tile.TileType.Volcano:
                 int volcanoSpawn = Random.Range(0, 9);
