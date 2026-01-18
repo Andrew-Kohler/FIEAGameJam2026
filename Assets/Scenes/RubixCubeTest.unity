@@ -1556,6 +1556,8 @@ MonoBehaviour:
   interactButtonText: {fileID: 0}
   healthTempText: {fileID: 1648217430}
   turnTempText: {fileID: 742592595}
+  healthContainer: {fileID: 1485665237}
+  helpButton: {fileID: 589362054}
   crackedShell1: {fileID: 1421037685}
   crackedShell2: {fileID: 1956179362}
   crackedShell3: {fileID: 1983062542}
@@ -4542,7 +4544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeState: {fileID: 485359660}
   readCube: {fileID: 1859107599}
-  primaryMenu: {fileID: 291785786}
+  primaryMenu: {fileID: 291785788}
 --- !u!224 &684037312
 RectTransform:
   m_ObjectHideFlags: 0

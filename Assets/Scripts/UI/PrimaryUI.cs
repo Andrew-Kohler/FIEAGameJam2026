@@ -10,6 +10,9 @@ public class PrimaryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthTempText;
     [SerializeField] private TextMeshProUGUI turnTempText;
 
+    [SerializeField] private GameObject healthContainer;
+    [SerializeField] private GameObject helpButton;
+
     public GameObject crackedShell1;
     public GameObject crackedShell2;
     public GameObject crackedShell3;
@@ -69,7 +72,7 @@ public class PrimaryUI : MonoBehaviour
         turnTempText.text = "Turn " + GameManager.Instance.GetTurnCount();
     }
 
-    public void ToggleInteractMode() // Switches between being able to drag to rotate the cube and click to move the snail
+    /*public void ToggleInteractMode() // Switches between being able to drag to rotate the cube and click to move the snail
     {
         GameManager.Instance.SetIsMovingSnail(!GameManager.Instance.GetIsMovingSnail());
         if (GameManager.Instance.GetIsMovingSnail())
@@ -80,12 +83,25 @@ public class PrimaryUI : MonoBehaviour
         {
             interactButtonText.text = "Rotating cube";
         }
-    }
+    }*/
 
     public void ToggleRotationMode() // Toggles the menu for rotating the cube on and off
     {
-        rotationMenu.SetActive(true);
-        GameManager.Instance.SetRotatingPiece(true);
-        this.gameObject.SetActive(false);
+        if (!GameManager.Instance.GetIsRotatingPiece())
+        {
+            rotationMenu.SetActive(true);
+            GameManager.Instance.SetRotatingPiece(true);
+            helpButton.SetActive(false);
+            healthContainer.SetActive(false);
+        }
+        else
+        {
+            rotationMenu.SetActive(false);
+            GameManager.Instance.SetRotatingPiece(false);
+            helpButton.SetActive(true);
+            healthContainer.SetActive(true);
+        }
+
+
     }
 }

@@ -9,7 +9,7 @@ public class RotationUI : MonoBehaviour
     [SerializeField] private CubeState cubeState;
     [SerializeField] private ReadCube readCube;
 
-    [SerializeField] private GameObject primaryMenu;
+    [SerializeField] private PrimaryUI primaryMenu;
 
     //private List<Transform> transformsOfReadCube;
     void Start()
@@ -34,7 +34,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetHighestTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -47,7 +47,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetLowestTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -60,7 +60,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetHighestTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -73,7 +73,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetLowestTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
     #endregion
@@ -89,7 +89,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetLeftmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -103,7 +103,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetLeftmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -117,7 +117,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetRightmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -131,7 +131,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetRightmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
     #endregion
@@ -147,7 +147,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetFrontmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -161,7 +161,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetFrontmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -175,7 +175,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetBackmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
 
@@ -189,7 +189,7 @@ public class RotationUI : MonoBehaviour
         }
         cubeState.PickUp(GetBackmostTransform());
 
-        primaryMenu.SetActive(true);
+        primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
     }
     #endregion
