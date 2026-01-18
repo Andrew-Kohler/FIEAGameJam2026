@@ -635,7 +635,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34810456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -643,7 +643,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -126.13, y: -135.06}
+  m_AnchoredPosition: {x: -114, y: -135}
   m_SizeDelta: {x: 68.04, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34810458
@@ -1228,7 +1228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -150, y: -255}
+  m_AnchoredPosition: {x: -304.2, y: -255}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94296655
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All Yellow tiles are safe to traverse.
+  m_text: The Yellow tiles of the Wheat Zone are safe to traverse.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -1615,7 +1615,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163656683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000013599212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1623,7 +1623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 509, y: -211}
+  m_AnchoredPosition: {x: 496.3, y: -239.00018}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163656685
@@ -1751,7 +1751,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231486652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00002217661}
   m_LocalScale: {x: 6.4, y: 3.5081482, z: 1.1851852}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1759,7 +1759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 53.69}
+  m_AnchoredPosition: {x: -0.000019152527, y: 37.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231486654
@@ -3076,7 +3076,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336115797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000020747044}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000008980612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3084,7 +3084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 462.70004, y: -284.49997}
+  m_AnchoredPosition: {x: 547.5, y: -271.70013}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &336115799
@@ -3551,7 +3551,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389858936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3559,7 +3559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -392, y: -211}
+  m_AnchoredPosition: {x: -392, y: -234}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389858938
@@ -3583,9 +3583,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: When passing over a Red tile, there is a random chance that Shellington
-    will be struck with a fireball. Being hit will result in either losing a ship
-    part or a life if Shellington does not possess any ship parts. A Red tile becomes
-    impassable if a volcano is occupying it.
+    will be struck with a fireball. Being hit will result in losing a shell. A Red
+    tile becomes impassable if a volcano is occupying it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -3854,7 +3853,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408880738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000020747044}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000008980612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3862,7 +3861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -118.89995, y: -210.99997}
+  m_AnchoredPosition: {x: -118.89994, y: -234.00012}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &408880740
@@ -4126,7 +4125,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414383399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000015963493}
   m_LocalScale: {x: 6.4, y: 3.5081482, z: 1.1851852}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4134,7 +4133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 53.69}
+  m_AnchoredPosition: {x: -0.000004178733, y: 53.01007}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414383401
@@ -4670,7 +4669,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487305088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000007844288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4678,7 +4677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -132.7, y: -209}
+  m_AnchoredPosition: {x: -391.89996, y: -256.9999}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &487305090
@@ -5884,7 +5883,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585628260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5892,7 +5891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -392, y: -209}
+  m_AnchoredPosition: {x: -392, y: -257}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &585628262
@@ -5915,10 +5914,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When there is an Orange tile on the same face of the cube that Shellington
-    currently occupies, there is a random chance for a Dust Devil to appear. Once
-    a Dust Devil appears, it will continue to move towards Shellington. If he is
-    caught, Shellington will be thrown to another face of the cube.
+  m_text: Orange tiles in the Desert Zone contain cacti. Running into a cactus will
+    result in the loss of a shell.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -7990,7 +7987,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854679439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000011766432}
   m_LocalScale: {x: 6.4, y: 3.5081482, z: 1.1851852}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -7998,7 +7995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 53.69}
+  m_AnchoredPosition: {x: 0.000011198272, y: 41.34}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &854679441
@@ -8073,7 +8070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 53.69}
+  m_AnchoredPosition: {x: 0, y: 42.57}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855663285
@@ -8628,7 +8625,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912331686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000013599212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8636,7 +8633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 252.6, y: -247.8}
+  m_AnchoredPosition: {x: 245, y: -275.80017}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &912331688
@@ -9066,7 +9063,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108.1, y: -135.06}
+  m_AnchoredPosition: {x: 120, y: -135}
   m_SizeDelta: {x: 67.75, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999882221
@@ -9767,10 +9764,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Every X number of moves that Shellington makes will award one instance
-    of rotation. Click the Rotate button to enter Rotation Mode and manipulate the
-    cube to create the optimal path for Shellington. After finishing up in Rotation
-    Mode, click the Snail icon to return to Movement Mode.
+  m_text: Oh no! Shellington the Snastronaut has crash landed on a strange, cube
+    shaped planet in the far reaches of Outer Snace. Click on squares to move Shellington
+    across the surface of the cube planet. To rotate segments of the cube, click
+    the Rotate button in the bottom left hand corner. Collect all three pieces of
+    Shellington's ship in as few moves as possible. In order to view which pieces
+    have already been collected, click Shellington's List in the bottom right hand
+    corner. Once all pieces have been collected, return to Shellington's ship to
+    repair it and send him on his way to continue exploring the Snalaxy.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -10711,7 +10712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -103.9, y: -255.00003}
+  m_AnchoredPosition: {x: -242.5, y: -255.00003}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215551655
@@ -12701,7 +12702,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553709904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 6.4, y: 3.5081482, z: 1.1851852}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -12709,7 +12710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 53.69}
+  m_AnchoredPosition: {x: 0, y: 32}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553709906
@@ -13093,7 +13094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -392, y: -211}
+  m_AnchoredPosition: {x: -398.9, y: -230}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609150514
@@ -13116,8 +13117,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: If Shellington spends X number of turns consecutively on White tiles, he
-    will freeze and lose a life. Mountains in this zone as also impassable tiles.
+  m_text: When entering the Tundra Zone, Shellington will become cold. Entering a
+    second White Tile consecutively will cause Shellington to freeze. Entering a
+    third will result in the loss of a shell. To thaw out, enter a different zone.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -13222,7 +13224,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615138245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13230,7 +13232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -392, y: -234}
+  m_AnchoredPosition: {x: -404, y: -221}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615138247
@@ -13253,9 +13255,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Some Green tiles will be occupied by mushrooms. Passing over a tile with
-    mushrooms will result in all tiles on the cube being rehidden until Shellington
-    approaches them again.  '
+  m_text: Some Green tiles will be occupied by poisonous mushrooms. Passing over
+    a tile with mushrooms will result in all tiles on the cube being rehidden until
+    Shellington approaches them again. The forest zone also contains trees. These
+    tiles are impassable.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -21588,7 +21591,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051173103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00002991093}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00007167993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21596,7 +21599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -296.6, y: -234.00005}
+  m_AnchoredPosition: {x: -308.60004, y: -221.00002}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051173105
@@ -21953,7 +21956,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123198676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21961,7 +21964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -392, y: -211}
+  m_AnchoredPosition: {x: -400, y: -239}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123198678
@@ -21984,7 +21987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Every X moves that Shellington makes, the tides will change. Blue tiles
+  m_text: Every two turns that Shellington takes, the tides will change. Blue tiles
     affected by High Tide are impassable while Blue tiles affected by Low Tide are
     safe to traverse.
   m_isRightToLeft: 0
