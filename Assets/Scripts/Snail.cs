@@ -337,16 +337,37 @@ public class Snail : MonoBehaviour
                 GameManager.Instance.ResetAllValues();
                 SceneManager.LoadScene(0);
             }
+            else
+            {
+                yield return new WaitForSeconds(.2f);
+                UpdateOcean();
+                UpdateDesert();
+
+                yield return new WaitForSeconds(.3f);
+                if (face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
+                {
+                    face.GetComponent<Tile>().ProcTile();
+                }
+                yield return new WaitForSeconds(1f);
+
+                GameManager.Instance.IncrementTurnCount();
+                isLerping = false;
+
+                yield return null;
+            }
         }
         else
         {
+            model.SetActive(true);
             yield return new WaitForSeconds(.2f);
             UpdateOcean();
             UpdateDesert();
 
             yield return new WaitForSeconds(.3f);
-            face.GetComponent<Tile>().ProcTile();
-
+            if(face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
+            {
+                face.GetComponent<Tile>().ProcTile();
+            }
             yield return new WaitForSeconds(1f);
 
             GameManager.Instance.IncrementTurnCount();
