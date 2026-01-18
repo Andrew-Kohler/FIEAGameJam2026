@@ -35,6 +35,9 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private Animator snailAnimator;
 
+    public delegate void OnItemPickup(int number);
+    public static event OnItemPickup onItemPickup;
+
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -235,7 +238,6 @@ public class Snail : MonoBehaviour
 
                     if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                         currentTile = face;
-                    //face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
                     StartCoroutine(TurnOrder(face));
                 }
@@ -361,6 +363,8 @@ public class Snail : MonoBehaviour
         {
             face.GetComponent<Tile>().HideShipPiece();
             GameManager.Instance.AddToPiecesHeld();
+            Debug.Log("Sending " + face.GetComponent<Tile>().collectibleNumber);
+            onItemPickup?.Invoke(face.GetComponent<Tile>().collectibleNumber);
         }
 
         if (face.GetComponent<Tile>().hasRocket)

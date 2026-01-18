@@ -11998,6 +11998,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipboard: {fileID: 1390417222}
   boardAnim: {fileID: 1390417225}
+  checkOne: {fileID: 1286511106}
+  checkTwo: {fileID: 792793024}
+  checkThree: {fileID: 1178143131}
   isOpen: 0
 --- !u!95 &1390417225
 Animator:

@@ -16,6 +16,7 @@ public class Tile : MonoBehaviour
     public GameObject passiveOccupant; // Things that are intraversable. The snail cannot move onto a space with a passive occupant.
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
     public GameObject collectibleOccupant;
+    public int collectibleNumber;
 
     [Header("Ocean Data")]
     public int turnsUntilSwap = 2;
