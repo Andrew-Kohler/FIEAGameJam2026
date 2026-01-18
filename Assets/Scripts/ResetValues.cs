@@ -10,6 +10,6 @@ public class ResetValues : MonoBehaviour
 
     public void ReturnToStart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 }
