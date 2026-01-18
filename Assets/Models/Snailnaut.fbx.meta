@@ -3,7 +3,32 @@ guid: d25803056dd3c1b47b5499c42de69d34
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye Pupil
+    second: {fileID: 2100000, guid: c64ff0a7f438993488d05bfa2463aa43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 07e464a317731dc44ad319f8fed93a6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 228bea335283b7a4bb5307ac9238cc9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shell
+    second: {fileID: 2100000, guid: 87787ffa5ef390c49a7762e5f6d4ebce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Snail Body
+    second: {fileID: 2100000, guid: b84244ce9a641434e8ea2cb95eae5288, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

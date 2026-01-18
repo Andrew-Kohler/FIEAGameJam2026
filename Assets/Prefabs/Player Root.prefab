@@ -49,8 +49,13 @@ MonoBehaviour:
   cubeState: {fileID: 0}
   lerpDuration: 1
   model: {fileID: 0}
+  sideFlag: 0
+  rotationZones: []
   isLerping: 0
   isFrosted: 0
+  isCold: 0
+  snailAnimator: {fileID: 0}
+  rotationUI: {fileID: 0}
 --- !u!1001 &5654761277140619227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.32
+      value: 0.214
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
       propertyPath: m_LocalPosition.y
