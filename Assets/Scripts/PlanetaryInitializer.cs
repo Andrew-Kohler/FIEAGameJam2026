@@ -84,14 +84,17 @@ public class PlanetaryInitializer : MonoBehaviour
 
         int randomIndex1 = Random.Range(0, validTiles.Count);
         validTiles[randomIndex1].GetComponent<Tile>().collectibleOccupant = shipFinPartPrefab;
+        validTiles[randomIndex1].GetComponent<Tile>().collectibleNumber = 1;
         validTiles.RemoveAt(randomIndex1);
 
         int randomIndex2 = Random.Range(0, validTiles.Count);
         validTiles[randomIndex2].GetComponent<Tile>().collectibleOccupant = shipThingyPartPrefab;
+        validTiles[randomIndex2].GetComponent<Tile>().collectibleNumber = 2;
         validTiles.RemoveAt(randomIndex2);
 
         int randomIndex3 = Random.Range(0, validTiles.Count);
         validTiles[randomIndex3].GetComponent<Tile>().collectibleOccupant = shipWindowPartPrefab;
+        validTiles[randomIndex3].GetComponent<Tile>().collectibleNumber = 3;
         validTiles.RemoveAt(randomIndex3);
 
     }
