@@ -161,6 +161,7 @@ public class PlanetaryInitializer : MonoBehaviour
                             break;
                         case 1:
                             tiles[m].GetComponent<Tile>().activeOccupant = snowyGroundPrefab;
+                            tiles[m].GetComponent<Tile>().cosmeticOccupant = snowyRockPrefab;
                             break;
                         default:
                             break;

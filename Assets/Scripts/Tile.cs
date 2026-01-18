@@ -192,7 +192,7 @@ public class Tile : MonoBehaviour
                 GetComponent<MeshRenderer>().material.color = Color.cornflowerBlue;
                 break;
             case TileType.Desert:
-                GetComponent<MeshRenderer>().material.color = Color.orangeRed;
+                GetComponent<MeshRenderer>().material.color = new Color(237.0f/255.0f, 121.0f/255.0f, 29.0f/255.0f);
                 break;
             default:
                 break;
