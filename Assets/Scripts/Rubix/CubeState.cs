@@ -57,7 +57,7 @@ public class CubeState : MonoBehaviour
     public void PutDown(List<GameObject> littleCubes, Transform pivot)
     {
         FindFirstObjectByType<Snail>().gameObject.transform.parent = this.GetComponentInChildren<SelectFace>().gameObject.transform;
-
+        FindFirstObjectByType<Snail>().UpdateFogOfWar();
         foreach (GameObject littleCube in littleCubes)
         {
             if (littleCube != littleCubes[4])

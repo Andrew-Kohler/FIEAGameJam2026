@@ -223,7 +223,7 @@ public class Snail : MonoBehaviour
 
 
 
-    void UpdateFogOfWar()
+    public void UpdateFogOfWar()
     {
         List<List<GameObject>> cubeSides = new List<List<GameObject>>()
                 {
@@ -311,8 +311,6 @@ public class Snail : MonoBehaviour
 
     IEnumerator TurnOrder(GameObject face)
     {
-        // Iterate through all tiles, and if they are close enough, reveal them
-        UpdateFogOfWar();
         if (face.GetComponent<Tile>().collectibleOccupant)
         {
             face.GetComponent<Tile>().HideShipPiece();
@@ -347,6 +345,8 @@ public class Snail : MonoBehaviour
         yield return new WaitForSeconds(.7f);
 
         GameManager.Instance.IncrementTurnCount();
+        // Iterate through all tiles, and if they are close enough, reveal them
+        UpdateFogOfWar();
         isLerping = false;
 
         yield return null;
