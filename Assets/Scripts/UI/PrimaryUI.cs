@@ -23,6 +23,11 @@ public class PrimaryUI : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        GameManager.Instance.SetRotatingPiece(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -58,5 +63,7 @@ public class PrimaryUI : MonoBehaviour
     public void ToggleRotationMode() // Toggles the menu for rotating the cube on and off
     {
         rotationMenu.SetActive(true);
+        GameManager.Instance.SetRotatingPiece(true);
+        this.gameObject.SetActive(false);
     }
 }
