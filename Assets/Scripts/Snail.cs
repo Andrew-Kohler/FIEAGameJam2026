@@ -355,6 +355,7 @@ public class Snail : MonoBehaviour
 
                 yield return null;
             }
+                
         }
         else
         {
