@@ -29,6 +29,9 @@ public class PlanetaryInitializer : MonoBehaviour
     [Header("Desert Init Params")]
     [SerializeField] private int numberOfCacti = 2;
 
+    [Header("Wheat Init Params")]
+    [SerializeField] private GameObject wheatPrefab;
+
     [Header("Collectable Init Params")]
     [SerializeField] private GameObject shipFinPartPrefab;
     [SerializeField] private GameObject shipWindowPartPrefab;
@@ -106,6 +109,7 @@ public class PlanetaryInitializer : MonoBehaviour
             case Tile.TileType.Wheat:
                 for (int i = 0; i < tiles.Count; i++)
                 {
+                    tiles[i].GetComponent<Tile>().activeOccupant = wheatPrefab;
                     if (i == 4)
                     {
                         tiles[4].GetComponent<Tile>().activeOccupant = crashedShipPrefab;
