@@ -20261,6 +20261,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4807828697536328330, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
   m_PrefabInstance: {fileID: 5758911243268826808}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1923092077 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8790875644253265869, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+  m_PrefabInstance: {fileID: 5758911243268826808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1944744614
 GameObject:
   m_ObjectHideFlags: 0
@@ -22175,6 +22180,10 @@ PrefabInstance:
       propertyPath: currentTile
       value: 
       objectReference: {fileID: 2099697126}
+    - target: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+      propertyPath: snailAnimator
+      value: 
+      objectReference: {fileID: 1923092077}
     - target: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: rotationZones.Array.size
       value: 3
