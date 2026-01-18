@@ -9915,10 +9915,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopRight
       objectReference: {fileID: 0}
-    - target: {fileID: 3203156811765318787, guid: df1a600a3fba76542bc0e15b3378a227, type: 3}
-      propertyPath: passiveOccupant
-      value: 
-      objectReference: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
     - target: {fileID: 4647953620933194263, guid: df1a600a3fba76542bc0e15b3378a227, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
