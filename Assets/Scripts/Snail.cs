@@ -27,8 +27,6 @@ public class Snail : MonoBehaviour
 
     public bool isLerping = false;
 
-    private float sideFlag = 0;
-
     private bool initialUpdate = false;
 
     public bool isFrosted = false;
@@ -75,7 +73,7 @@ public class Snail : MonoBehaviour
             {
                 GameObject face = hit.collider.gameObject;
                 //UnityEngine.Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
-                if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
+                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true
                     && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
                     float xDistance = currentTile.transform.position.x - face.transform.position.x;
@@ -213,15 +211,15 @@ public class Snail : MonoBehaviour
 
                 if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                     currentTile = face;
-                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
+                face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
-                    StartCoroutine(TurnOrder(face));
-                   
-                }
+                StartCoroutine(TurnOrder(face));
+
             }
         }
-        
     }
+
+
 
     void UpdateFogOfWar()
     {
@@ -235,7 +233,7 @@ public class Snail : MonoBehaviour
         {
             foreach (GameObject face in cubeSide)
             {
-                if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                 {
                     face.GetComponent<Tile>().RevealFromFog();
                 }
@@ -355,8 +353,6 @@ public class Snail : MonoBehaviour
             yield return null;
         }
 
-        
-    }
 
-    
+    }
 }
