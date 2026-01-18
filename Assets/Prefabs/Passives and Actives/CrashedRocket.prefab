@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Smoke Gravity
       objectReference: {fileID: 0}
+    - target: {fileID: 2263400886593003554, guid: 5885d616e9f02044799257c9415553c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3108228817644050310, guid: 5885d616e9f02044799257c9415553c9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.74200493

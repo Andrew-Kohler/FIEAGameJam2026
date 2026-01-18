@@ -12860,11 +12860,11 @@ MonoBehaviour:
   oceanRecededPrefab: {fileID: 304155157287545397, guid: 0f7e270e7920b6a40989d2da2bbd092c, type: 3}
   numberOfRocks: 3
   snowBlockerPrefabs:
-  - {fileID: 304155157287545397, guid: 9eb78334f2587594db55f07ce90a30d6, type: 3}
-  - {fileID: 304155157287545397, guid: 47596bb01c197d5408dbabbf792c476a, type: 3}
-  - {fileID: 304155157287545397, guid: 4bb9655c34d00b4408db64164af0420e, type: 3}
+  - {fileID: 304155157287545397, guid: ab33fcbcfca4b934594f1cc473d612f3, type: 3}
+  - {fileID: 304155157287545397, guid: 14d6663d9fba1ae4aa40f2728654297a, type: 3}
+  - {fileID: 304155157287545397, guid: ab33fcbcfca4b934594f1cc473d612f3, type: 3}
   snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
-  snowyRockPrefab: {fileID: 0}
+  snowyRockPrefab: {fileID: 304155157287545397, guid: 752ba1fef0496874a97925a229cdadd9, type: 3}
   numberOfCacti: 2
   cactiPrefab: {fileID: 304155157287545397, guid: f162851574378cf43817740a86b4f745, type: 3}
   rocksPrefab: {fileID: 304155157287545397, guid: d003e24dd47a20147a74cb86e866b05d, type: 3}
