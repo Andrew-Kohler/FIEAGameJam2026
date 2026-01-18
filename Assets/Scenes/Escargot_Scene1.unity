@@ -708,7 +708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e777ad2ad9b62b44098455342d7bf000, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2170,7 +2170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: afbda11f20f44d941a17141fb27690ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3065,6 +3065,7 @@ RectTransform:
   - {fileID: 236387576}
   - {fileID: 112347593}
   - {fileID: 26306300}
+  - {fileID: 706744109}
   m_Father: {fileID: 1333610724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3972,7 +3973,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: When passing over a Red tile, there is a random chance that Shellington
     will be struck with a fireball. Being hit will result in losing a shell. A Red
-    tile becomes impassable if a volcano is occupying it.
+    tile becomes impassable if a volcano is occupying it. Other tiles are safe.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -4544,7 +4545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 72daa95688cc34343b52483d9c39d615, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7485,6 +7486,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705497695}
   m_CullTransparentMesh: 1
+--- !u!1 &706744108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706744109}
+  - component: {fileID: 706744111}
+  - component: {fileID: 706744110}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &706744109
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706744108}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.83, y: 1.0030112, z: 0.33898902}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 294029686}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 297.9, y: 139.31}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &706744110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706744108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -813167754, guid: 7b782a541a778df4094902236b45d37f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &706744111
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706744108}
+  m_CullTransparentMesh: 1
 --- !u!1001 &708346192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8545,7 +8621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e5bc5d7d81ebeeb4aa5314f2547f798a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8620,7 +8696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c0b52b1bc585bea4ebfdbea6d4608530, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13410,7 +13486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e755b8ef62bdde04b80e4181566f307f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13797,6 +13873,7 @@ MonoBehaviour:
   m_text: When entering the Tundra Zone, Shellington will become cold. Entering a
     second White Tile consecutively will cause Shellington to freeze. Entering a
     third will result in the loss of a shell. To thaw out, enter a different zone.
+    Mountains and trees in this zone are impassable.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
   m_sharedMaterial: {fileID: -2131311111843060797, guid: ab92b5ffc5bb93e49a9fbc86b0dfba72, type: 2}
@@ -20433,6 +20510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1175042416}
   speed: 200
+  rotationZones: []
 --- !u!114 &1859107599
 MonoBehaviour:
   m_ObjectHideFlags: 0
