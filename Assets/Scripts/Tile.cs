@@ -159,12 +159,12 @@ public class Tile : MonoBehaviour
                 if (currentActive != null) Destroy(currentActive);
                 if (!traversable) // The passive is the water, the active is the one you can stand on
                 {
-                    Debug.Log("PASSIVE SPAWN FROM REFRESH");
+                    //Debug.Log("PASSIVE SPAWN FROM REFRESH");
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 else
                 {
-                    Debug.Log("ACTIVE SPAWN FROM REFRESH");
+                    //Debug.Log("ACTIVE SPAWN FROM REFRESH");
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }
