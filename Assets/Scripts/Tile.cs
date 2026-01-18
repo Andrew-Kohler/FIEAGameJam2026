@@ -210,6 +210,12 @@ public class Tile : MonoBehaviour
                     StartCoroutine(DoMagmaBall());
 
                 }
+                float change2 = Random.Range(0, 1.001f);
+                if (change < .05)
+                {
+                    StartCoroutine(DoMagmaBall());
+
+                }
                 FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Snow:
@@ -218,11 +224,16 @@ public class Tile : MonoBehaviour
                     FindFirstObjectByType<Snail>().isFrosted = false;
                     GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
                 }
-                else
+                else if(FindFirstObjectByType<Snail>().isCold)
                 {
                     FindFirstObjectByType<Snail>().isFrosted = true;
+                    FindFirstObjectByType<Snail>().isCold = false;
                 }
-                break;
+                else
+                {
+                    FindFirstObjectByType<Snail>().isCold = true;
+                }
+                    break;
             case TileType.Jungle:
                 if(activeOccupant != null)
                 {

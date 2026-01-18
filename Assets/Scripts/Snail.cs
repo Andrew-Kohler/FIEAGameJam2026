@@ -32,6 +32,7 @@ public class Snail : MonoBehaviour
     private bool initialUpdate = false;
 
     public bool isFrosted = false;
+    public bool isCold = false;
 
     [SerializeField] private Animator snailAnimator;
 
@@ -95,7 +96,6 @@ public class Snail : MonoBehaviour
 
                     if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                         currentTile = face;
-                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
                     switch (sideFlag)
                     {
