@@ -16,6 +16,7 @@ public class Tile : MonoBehaviour
     public GameObject passiveOccupant; // Things that are intraversable. The snail cannot move onto a space with a passive occupant.
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
     public GameObject collectibleOccupant;
+    public GameObject cosmeticOccupant;
     public int collectibleNumber;
 
     [Header("Ocean Data")]
@@ -29,13 +30,12 @@ public class Tile : MonoBehaviour
     public GameObject currentPassive;
     public GameObject currentActive;
     public GameObject currentCollectible;
+    public GameObject currentCosmetic;
 
     public bool hasRocket = false;
 
     public delegate void OnRockImpact();
     public static event OnRockImpact onRockImpact;
-
-
 
     void Start()
     {
@@ -58,17 +58,14 @@ public class Tile : MonoBehaviour
                 if (currentActive != null) Destroy(currentActive);
                 if (traversable)
                 {
-                    Debug.Log("ACTIVE SPAWN FROM FOG");
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 else
                 {
-                    Debug.Log("PASSIVE SPAWN FROM FOG");
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (collectibleOccupant != null)
                 {
-                    Debug.Log("COLLECT SPAWN FROM FOG");
                     currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }
@@ -76,21 +73,23 @@ public class Tile : MonoBehaviour
             {
                 if (passiveOccupant != null)
                 {
-                    Debug.Log("PASSIVE SPAWN FROM FOG - NONOCEAN");
                     if (currentPassive != null) Destroy(currentPassive);
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (activeOccupant != null)
                 {
-                    Debug.Log("ACTIVE SPAWN FROM FOG - NONOCEAN");
                     if (currentActive != null) Destroy(currentActive);
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (collectibleOccupant != null)
                 {
-                    Debug.Log("COLLECT SPAWN FROM FOG - NONOCEAN");
                     if (currentCollectible != null) Destroy(currentCollectible);
                     currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                if (cosmeticOccupant != null)
+                {
+                    if (currentCosmetic != null) Destroy(currentCosmetic);
+                    currentCosmetic = Instantiate(cosmeticOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }  
         }
@@ -110,6 +109,10 @@ public class Tile : MonoBehaviour
         if (currentCollectible != null)
         {
             currentCollectible.GetComponent<Animator>().Play("Shrink", 0, 0);
+        }
+        if (currentCosmetic != null)
+        {
+            currentCosmetic.GetComponent<Animator>().Play("Shrink", 0, 0);
         }
         isInFogOfWar = true;
     }
@@ -210,6 +213,12 @@ public class Tile : MonoBehaviour
                     StartCoroutine(DoMagmaBall());
 
                 }
+                float change2 = Random.Range(0, 1.001f);
+                if (change < .05)
+                {
+                    StartCoroutine(DoMagmaBall());
+
+                }
                 FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Snow:
@@ -255,37 +264,11 @@ public class Tile : MonoBehaviour
                 FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Desert:
-                /*if (currentActive != null)
+                if (activeOccupant != null)
                 {
-                    Destroy(currentActive);
-                    GameManager.Instance.SetDustDevilCount(GameManager.Instance.GetDustDevilCount() - 1);
-                    // How do we get the player to a random, valid tile
-
-                    CubeState cubeState = FindFirstObjectByType<CubeState>();
-
-                    List<GameObject> validTiles = new List<GameObject>();
-
-                    List<List<GameObject>> cubeSides = new List<List<GameObject>>()
-                    {
-                        cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
-                    };
-                    foreach (List<GameObject> faces in cubeSides)
-                    {
-                        foreach (GameObject face in faces)
-                        {
-                            if (face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != TileType.Desert)
-                            {
-                               validTiles.Add(face);
-                            }
-                        }
-                    }
-
-                    int index = Random.Range(0, validTiles.Count);
-
-                    // Waiting until Chrys is done to finish implementing this
-                }*/
-                //FindFirstObjectByType<Snail>().isFrosted = false;
-
+                    GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
+                }
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             default:
                 break;
