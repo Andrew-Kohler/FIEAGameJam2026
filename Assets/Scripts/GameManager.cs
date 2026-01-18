@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         }
         if (piecesRetrieved == 3)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(0);
         }
     }
 
