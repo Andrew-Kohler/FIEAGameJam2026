@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,14 @@ public class GameManager : MonoBehaviour
         if (Mouse.current.middleButton.wasPressedThisFrame)
         {
             isMovingSnail = !isMovingSnail;
+        }
+        if (health == 0)
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (piecesRetrieved == 3)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
