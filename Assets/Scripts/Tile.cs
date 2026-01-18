@@ -1,4 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,12 +23,16 @@ public class Tile : MonoBehaviour
 
     [Header("Volcano Data")]
     private float chanceToMeteor = .5f;
+    [SerializeField] private GameObject meteor;
 
     public GameObject currentPassive;
     public GameObject currentActive;
     public GameObject currentCollectible;
 
     public bool hasRocket = false;
+
+    public delegate void OnRockImpact();
+    public static event OnRockImpact onRockImpact;
 
 
 
@@ -165,10 +172,10 @@ public class Tile : MonoBehaviour
         {
             case TileType.Volcano:
                 float change = Random.Range(0, 1.001f);
-                if(change > chanceToMeteor)
+                if (change < chanceToMeteor)
                 {
-                    // TODO: Make a nice timed-out coroutine doing an animation for this tile
-                    GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
+                    StartCoroutine(DoMagmaBall());
+
                 }
                 FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
@@ -274,4 +281,26 @@ public class Tile : MonoBehaviour
                 break;
         }
     }
+
+    IEnumerator DoMagmaBall()
+    {
+        // TODO: Make a nice timed-out coroutine doing an animation for this tile
+        Vector3 playerPos = FindFirstObjectByType<Snail>().transform.position;
+
+        Vector3 spawnPos = new Vector3(playerPos.x, playerPos.y + 10f, playerPos.z);
+
+        GameObject newMeteor = Instantiate(meteor, spawnPos, meteor.transform.rotation);
+
+        while(newMeteor.transform.position.y > playerPos.y)
+        {
+            newMeteor.transform.position = new Vector3(playerPos.x, newMeteor.transform.position.y - 6 * Time.deltaTime, playerPos.z);
+            yield return null;
+        }
+        Destroy(newMeteor);
+        GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
+        onRockImpact?.Invoke();
+        yield return null;
+    }
 }
+
+
