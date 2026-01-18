@@ -3397,9 +3397,9 @@ MonoBehaviour:
   crackedShell1: {fileID: 584165376}
   crackedShell2: {fileID: 1049943330}
   crackedShell3: {fileID: 428835465}
-  icyShell1: {fileID: 0}
-  icyShell2: {fileID: 0}
-  icyShell3: {fileID: 0}
+  icyShell1: {fileID: 584165376}
+  icyShell2: {fileID: 1589129280}
+  icyShell3: {fileID: 643355295}
 --- !u!1 &898412371
 GameObject:
   m_ObjectHideFlags: 0
@@ -4181,10 +4181,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopRight
       objectReference: {fileID: 0}
-    - target: {fileID: 3203156811765318787, guid: df1a600a3fba76542bc0e15b3378a227, type: 3}
-      propertyPath: passiveOccupant
-      value: 
-      objectReference: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
     - target: {fileID: 4647953620933194263, guid: df1a600a3fba76542bc0e15b3378a227, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -4934,6 +4930,7 @@ MonoBehaviour:
   - {fileID: 304155157287545397, guid: 4bb9655c34d00b4408db64164af0420e, type: 3}
   snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
   numberOfCacti: 2
+  wheatPrefab: {fileID: 304155157287545397, guid: dc99c5932a326f24e9ba68d24da84c3b, type: 3}
   shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
   shipWindowPartPrefab: {fileID: 304155157287545397, guid: df959e01bb85b7a46aa6edfd5bb97ad5, type: 3}
   shipThingyPartPrefab: {fileID: 304155157287545397, guid: 21af0029027ac6046a2474c685438330, type: 3}

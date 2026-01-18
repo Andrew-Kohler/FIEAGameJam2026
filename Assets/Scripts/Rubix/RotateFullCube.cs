@@ -45,12 +45,12 @@ public class RotateFullCube : MonoBehaviour
 
     void Swipe()
     {
-        if (Mouse.current.rightButton.wasPressedThisFrame && !GameManager.Instance.GetIsRotatingPiece())
+        if (Mouse.current.rightButton.wasPressedThisFrame && !GameManager.Instance.GetIsRotatingPiece() && !FindFirstObjectByType<Snail>().isLerping)
         {
             firstPressPos = Mouse.current.position.ReadValue();
             startedDrag = true;
         }
-        else if (Mouse.current.rightButton.wasReleasedThisFrame && !GameManager.Instance.GetIsRotatingPiece())
+        else if (Mouse.current.rightButton.wasReleasedThisFrame && !GameManager.Instance.GetIsRotatingPiece() && !FindFirstObjectByType<Snail>().isLerping)
         {
             startedDrag = false;
             secondPressPos = Mouse.current.position.ReadValue();
