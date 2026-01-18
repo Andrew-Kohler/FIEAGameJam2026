@@ -12942,7 +12942,7 @@ MonoBehaviour:
   snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
   snowyRockPrefab: {fileID: 304155157287545397, guid: 752ba1fef0496874a97925a229cdadd9, type: 3}
   numberOfCacti: 2
-  cactiPrefab: {fileID: 304155157287545397, guid: f162851574378cf43817740a86b4f745, type: 3}
+  cactiPrefab: {fileID: 304155157287545397, guid: 8c8fb901efc123f44a99fa692c92b3f1, type: 3}
   rocksPrefab: {fileID: 304155157287545397, guid: d003e24dd47a20147a74cb86e866b05d, type: 3}
   wheatPrefab: {fileID: 304155157287545397, guid: dc99c5932a326f24e9ba68d24da84c3b, type: 3}
   shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
