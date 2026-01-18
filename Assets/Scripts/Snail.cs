@@ -36,6 +36,8 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private Animator snailAnimator;
 
+    [SerializeField] private RotationUI rotationUI;
+
     public delegate void OnItemPickup(int number);
     public static event OnItemPickup onItemPickup;
 
@@ -186,7 +188,7 @@ public class Snail : MonoBehaviour
 
                             break;
                         case 2:
-                            //UnityEngine.Debug.Log("RIGHT!!!!");
+                            UnityEngine.Debug.Log("RIGHT!!!!");
 
                             if (xDistance >= 0.9)
                             {
@@ -398,6 +400,13 @@ public class Snail : MonoBehaviour
         // Iterate through all tiles, and if they are close enough, reveal them
         UpdateFogOfWar();
         isLerping = false;
+
+        // UNSTABLE MODE: A shift happens at the end of every turn!
+        if (GameManager.Instance.challengeMode)
+        {
+            rotationUI.RandomRotation();
+        }
+
 
         yield return null;
 

@@ -7,13 +7,18 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI time;
     [SerializeField] private TextMeshProUGUI score;
 
+    [SerializeField] private GameObject unstable;
+
     private double scoreDouble;
     private int finalScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (GameManager.Instance.challengeMode)
+        {
+            unstable.SetActive(true);
+        }
     }
 
     // Update is called once per frame

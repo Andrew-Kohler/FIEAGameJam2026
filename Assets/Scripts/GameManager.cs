@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private bool isTurningLeft = true;  // Control variable for planetary rotations going in one of two directions
     private bool isRotatingPiece = false;
 
+    public bool challengeMode = false;
+
     private int health = 3;
     private int maxHealth = 3;
 
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
     private int piecesHeld = 0;
 
     private int activeDustDevils = 0;
+
+    public int challengeModeRotations = 7;
 
     public static GameManager Instance
     {
@@ -170,5 +174,7 @@ public class GameManager : MonoBehaviour
         piecesRetrieved = 0;
         piecesHeld = 0;
         activeDustDevils = 0;
+        challengeMode = false;
+        challengeModeRotations = 7;
     }
 }

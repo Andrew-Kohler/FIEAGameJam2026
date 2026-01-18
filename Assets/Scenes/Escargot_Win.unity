@@ -1289,6 +1289,7 @@ MonoBehaviour:
   turnTempText: {fileID: 1520590992}
   time: {fileID: 1468767420}
   score: {fileID: 995953486}
+  unstable: {fileID: 54970067}
 --- !u!1 &1319303023
 GameObject:
   m_ObjectHideFlags: 0
