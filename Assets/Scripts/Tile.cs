@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class Tile : MonoBehaviour
 {
@@ -64,15 +65,8 @@ public class Tile : MonoBehaviour
                     if (currentActive != null) Destroy(currentActive);
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
-            }
-
-            
+            }  
         }
-
-        // Ok, the ocean tiles essentially have two states and are on their own timer
-        // When their turn counter ticks to 0, they change that state
-        // However, we can't showcase that state change until they're revealed
-        // So just have that as a conditional
         
     }
 
@@ -187,7 +181,16 @@ public class Tile : MonoBehaviour
                 }
                 break;
             case TileType.Desert:
-                // No INDIVIDUAL effects proc on the desert tile
+
+                if(currentActive == null)
+                {
+                    float chance = Random.Range(0, 1.0f);
+                    /*if(chance < .3f && )
+                    {
+
+                    }*/
+                }
+
                 break;
             default:
                 break;

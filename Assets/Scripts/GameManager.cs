@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private int piecesRetrieved = 0;
     private int piecesHeld = 0;
 
+    private int activeDustDevils = 0;
+
     public static GameManager Instance
     {
         get
@@ -95,10 +97,16 @@ public class GameManager : MonoBehaviour
         return turnCount;
     }
 
+    public int GetDustDevilCount()
+    {
+        return activeDustDevils;
+    }
+
     public void ResetAllValues()
     {
         health = maxHealth;
         turnCount = 0;
         piecesRetrieved = 0;
+        activeDustDevils = 0;
     }
 }
