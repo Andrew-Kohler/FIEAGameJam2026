@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
         time.text = "Time: " + Timer.GetTime();
         turnTempText.text = "Turns: " + GameManager.Instance.GetTurnCount();
 
-        scoreDouble = ((100 - (Timer.GetTime()) * 0.3) + ((100 - GameManager.Instance.GetTurnCount()) * 0.7)) + 1000;
+        scoreDouble = ((850/GameManager.Instance.GetTurnCount()) * (400/Timer.GetTime()) * (100));
         finalScore = (int)scoreDouble;
 
         score.text = "Score: " + finalScore;
