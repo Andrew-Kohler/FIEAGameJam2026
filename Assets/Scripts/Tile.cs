@@ -184,10 +184,12 @@ public class Tile : MonoBehaviour
                 {
                     FindFirstObjectByType<Snail>().isFrosted = false;
                     GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
+                    Debug.Log("Cracked");
                 }
                 else
                 {
                     FindFirstObjectByType<Snail>().isFrosted = true;
+                    Debug.Log("Frosted");
                 }
                 break;
             case TileType.Jungle:
@@ -243,7 +245,7 @@ public class Tile : MonoBehaviour
                         }
                     }
                 }
-                FindFirstObjectByType<Snail>().isFrosted = false;
+                //FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Desert:
                 if (currentActive != null)
@@ -275,7 +277,7 @@ public class Tile : MonoBehaviour
 
                     // Waiting until Chrys is done to finish implementing this
                 }
-                FindFirstObjectByType<Snail>().isFrosted = false;
+                //FindFirstObjectByType<Snail>().isFrosted = false;
 
                 break;
             default:
