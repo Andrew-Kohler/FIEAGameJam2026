@@ -2122,8 +2122,8 @@
     "m_ObjectId": "2404d3cab2c7487c97bf4b9746af59d9",
     "m_Title": "Layer 2",
     "m_Position": {
-        "x": -2351.200439453125,
-        "y": 202.4000701904297
+        "x": -2351.199951171875,
+        "y": 202.39991760253907
     }
 }
 
@@ -3911,7 +3911,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.15000000596046449,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -6971,8 +6971,8 @@
     "m_ObjectId": "ff0aa902ed8d430c95fc8682c515447e",
     "m_Title": "Layer 1",
     "m_Position": {
-        "x": -2350.400390625,
-        "y": -819.2000122070313
+        "x": -2350.400146484375,
+        "y": -819.2000732421875
     }
 }
 

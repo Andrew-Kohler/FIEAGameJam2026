@@ -258,7 +258,7 @@ public class Snail : MonoBehaviour
                 if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
                 {
                     {
-                        face.GetComponent<Tile>().ProcTile();
+                        face.GetComponent<Tile>().TickDownOceanTile();
                     }
                 }
             }
@@ -267,7 +267,7 @@ public class Snail : MonoBehaviour
 
     void UpdateDesert()
     {
-        List<List<GameObject>> cubeSides = new List<List<GameObject>>()
+        /*List<List<GameObject>> cubeSides = new List<List<GameObject>>()
                 {
                     cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
                 };
@@ -277,14 +277,14 @@ public class Snail : MonoBehaviour
         {
             foreach (GameObject face in cubeSide)
             {
-                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                if (face.GetComponent<Tile>().tileType == Tile.TileType.Desert)
                 {
                     {
                         face.GetComponent<Tile>().updateDesert();
                     }
                 }
             }
-        }
+        }*/
     }
 
     public GameObject GetCurrentTile()
@@ -321,7 +321,6 @@ public class Snail : MonoBehaviour
 
         if (face.GetComponent<Tile>().hasRocket)
         {
-            model.SetActive(false);
             if (GameManager.Instance.GetPiecesHeld() > 0)
             {
                 int pieces = GameManager.Instance.GetPiecesHeld();
@@ -331,52 +330,26 @@ public class Snail : MonoBehaviour
                     GameManager.Instance.AddToPiecesRetrieved();
                 }
             }
-
-            if (GameManager.Instance.GetPiecesRetrieved() == 3)
-            {
-                GameManager.Instance.ResetAllValues();
-                SceneManager.LoadScene(0);
-            }
-            else
-            {
-                yield return new WaitForSeconds(.2f);
-                UpdateOcean();
-                UpdateDesert();
-
-                yield return new WaitForSeconds(.3f);
-                if (face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
-                {
-                    face.GetComponent<Tile>().ProcTile();
-                }
-                yield return new WaitForSeconds(1f);
-
-                GameManager.Instance.IncrementTurnCount();
-                isLerping = false;
-
-                yield return null;
-            }
-                
         }
-        else
+        if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
         {
-            model.SetActive(true);
-            yield return new WaitForSeconds(.2f);
-            UpdateOcean();
-            UpdateDesert();
-
-            yield return new WaitForSeconds(.3f);
-            if(face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
-            {
-                face.GetComponent<Tile>().ProcTile();
-            }
-            yield return new WaitForSeconds(1f);
-
-            GameManager.Instance.IncrementTurnCount();
-            isLerping = false;
-
-            yield return null;
+            face.GetComponent<Tile>().ProcTile();
         }
+        yield return new WaitForSeconds(.2f);
+        UpdateOcean();
+        //UpdateDesert();
+        yield return new WaitForSeconds(.3f);
 
+        if (face.GetComponent<Tile>().tileType != Tile.TileType.Ocean)
+        {
+            face.GetComponent<Tile>().ProcTile();
+        }
+        yield return new WaitForSeconds(.7f);
+
+        GameManager.Instance.IncrementTurnCount();
+        isLerping = false;
+
+        yield return null;
 
     }
 }
