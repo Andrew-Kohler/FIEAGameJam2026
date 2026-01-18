@@ -44,6 +44,28 @@ public class PrimaryUI : MonoBehaviour
         {
             crackedShell1.SetActive(true);
         }
+
+        if (FindFirstObjectByType<Snail>().isFrosted)
+        {
+            if (GameManager.Instance.GetHealth() == 3)
+            {
+                icyShell3.SetActive(true);
+            }
+            if (GameManager.Instance.GetHealth() == 2)
+            {
+                icyShell2.SetActive(true);
+            }
+            if (GameManager.Instance.GetHealth() == 1)
+            {
+                icyShell1.SetActive(true);
+            }
+        }
+        else
+        {
+            icyShell1.SetActive(false);
+            icyShell2.SetActive(false);
+            icyShell3.SetActive(false);
+        }
         turnTempText.text = "Turn " + GameManager.Instance.GetTurnCount();
     }
 

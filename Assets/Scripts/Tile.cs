@@ -27,6 +27,8 @@ public class Tile : MonoBehaviour
 
     public bool hasRocket = false;
 
+
+
     void Start()
     {
         
@@ -168,9 +170,18 @@ public class Tile : MonoBehaviour
                     // TODO: Make a nice timed-out coroutine doing an animation for this tile
                     GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
                 }
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Snow:
-
+                if (FindFirstObjectByType<Snail>().isFrosted)
+                {
+                    FindFirstObjectByType<Snail>().isFrosted = false;
+                    GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
+                }
+                else
+                {
+                    FindFirstObjectByType<Snail>().isFrosted = true;
+                }
                 break;
             case TileType.Jungle:
                 if(activeOccupant != null)
@@ -193,9 +204,11 @@ public class Tile : MonoBehaviour
                         }
                     }
                 }
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Wheat:
                 // No effects proc on the wheat tile
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Ocean: // Called when all tiles across the world are proc'd
                 turnsUntilSwapCounter--;
@@ -222,6 +235,7 @@ public class Tile : MonoBehaviour
                         }
                     }
                 }
+                FindFirstObjectByType<Snail>().isFrosted = false;
                 break;
             case TileType.Desert:
                 if (currentActive != null)
@@ -253,9 +267,9 @@ public class Tile : MonoBehaviour
 
                     // Waiting until Chrys is done to finish implementing this
                 }
+                FindFirstObjectByType<Snail>().isFrosted = false;
 
-
-                    break;
+                break;
             default:
                 break;
         }
