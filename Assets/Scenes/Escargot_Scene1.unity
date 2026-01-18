@@ -12176,13 +12176,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeState: {fileID: 485359660}
+  numberOfPools: 2
   volcanoPrefab: {fileID: 304155157287545397, guid: 36527b65e1b23c64a9d7ecb047af98f3, type: 3}
+  lavaPoolPrefab: {fileID: 304155157287545397, guid: 57d476e56b88b81479f25998a6fd4f78, type: 3}
   numberOfTrees: 3
   numberOfFogBushes: 2
   treePrefab: {fileID: 304155157287545397, guid: d2fab05490d19e44d96b6ac47c575c30, type: 3}
   bushPrefab: {fileID: 304155157287545397, guid: eca3950a17dbfe644a5ce0cead20e610, type: 3}
+  grassPrefab: {fileID: 304155157287545397, guid: 954ec95627d3d4d41b6157c62fd506dc, type: 3}
   oceanRisenPrefab: {fileID: 304155157287545397, guid: 6a915eeb48e1caf4d85026a35ffbe52e, type: 3}
-  oceanRecededPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
+  oceanRecededPrefab: {fileID: 304155157287545397, guid: 0f7e270e7920b6a40989d2da2bbd092c, type: 3}
   numberOfRocks: 3
   snowBlockerPrefabs:
   - {fileID: 304155157287545397, guid: 9eb78334f2587594db55f07ce90a30d6, type: 3}
@@ -12190,6 +12193,8 @@ MonoBehaviour:
   - {fileID: 304155157287545397, guid: 4bb9655c34d00b4408db64164af0420e, type: 3}
   snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
   numberOfCacti: 2
+  cactiPrefab: {fileID: 304155157287545397, guid: f162851574378cf43817740a86b4f745, type: 3}
+  rocksPrefab: {fileID: 304155157287545397, guid: b9c830ed8be30574fbfa425e9fd15ffd, type: 3}
   wheatPrefab: {fileID: 304155157287545397, guid: dc99c5932a326f24e9ba68d24da84c3b, type: 3}
   shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
   shipWindowPartPrefab: {fileID: 304155157287545397, guid: df959e01bb85b7a46aa6edfd5bb97ad5, type: 3}

@@ -9,13 +9,16 @@ public class PlanetaryInitializer : MonoBehaviour
     public CubeState cubeState;
 
     [Header("Volcano Init Params")]
+    [SerializeField] private int numberOfPools = 2;
     [SerializeField] private GameObject volcanoPrefab;
+    [SerializeField] private GameObject lavaPoolPrefab;
 
     [Header("Jungle Init Params")]
     [SerializeField] private int numberOfTrees = 3;
     [SerializeField] private int numberOfFogBushes = 2;
     [SerializeField] private GameObject treePrefab;
     [SerializeField] private GameObject bushPrefab;
+    [SerializeField] private GameObject grassPrefab;
 
     [Header("Ocean Init Params")]
     [SerializeField] private GameObject oceanRisenPrefab;
@@ -28,6 +31,8 @@ public class PlanetaryInitializer : MonoBehaviour
 
     [Header("Desert Init Params")]
     [SerializeField] private int numberOfCacti = 2;
+    [SerializeField] private GameObject cactiPrefab;
+    [SerializeField] private GameObject rocksPrefab;
 
     [Header("Wheat Init Params")]
     [SerializeField] private GameObject wheatPrefab;
