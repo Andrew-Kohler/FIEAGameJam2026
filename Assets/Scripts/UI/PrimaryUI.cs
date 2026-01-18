@@ -112,7 +112,7 @@ public class PrimaryUI : MonoBehaviour
                     rotationMenu.SetActive(true);
                     GameManager.Instance.SetRotatingPiece(true);
                     helpButton.SetActive(false);
-                    healthContainer.SetActive(false);
+                    //healthContainer.SetActive(false);
                 }
             }
             else
@@ -120,7 +120,7 @@ public class PrimaryUI : MonoBehaviour
                 rotationMenu.SetActive(true);
                 GameManager.Instance.SetRotatingPiece(true);
                 helpButton.SetActive(false);
-                healthContainer.SetActive(false);
+                //healthContainer.SetActive(false);
             }
 
         }
