@@ -4750,6 +4750,7 @@ MonoBehaviour:
   rightTiles: []
   upTiles: []
   downTiles: []
+  snail: {fileID: 1601486208}
 --- !u!95 &485359661
 Animator:
   serializedVersion: 7
@@ -13176,6 +13177,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599251011}
   m_CullTransparentMesh: 1
+--- !u!114 &1601486208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+  m_PrefabInstance: {fileID: 5758911243268826808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7144f6f98b41c541a5cccf022c44f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1609150512
 GameObject:
   m_ObjectHideFlags: 0

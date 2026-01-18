@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
             currentTime += Time.deltaTime;
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        Debug.Log(currentTime);
+        //Debug.Log(currentTime);
     }
 
     public void StartTimer()
