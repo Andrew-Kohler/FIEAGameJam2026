@@ -277,7 +277,7 @@ public class Snail : MonoBehaviour
         {
             foreach (GameObject face in cubeSide)
             {
-                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                if (face.GetComponent<Tile>().tileType == Tile.TileType.Desert)
                 {
                     {
                         face.GetComponent<Tile>().updateDesert();

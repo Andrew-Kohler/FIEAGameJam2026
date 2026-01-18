@@ -53,20 +53,21 @@ public class Tile : MonoBehaviour
             isInFogOfWar = false;
             if (tileType == TileType.Ocean)
             {
+                if (currentPassive != null) Destroy(currentPassive);
+                if (currentActive != null) Destroy(currentActive);
                 if (traversable)
                 {
-                    if (currentPassive != null) Destroy(currentPassive);
-                    if (currentActive != null) Destroy(currentActive);
+                    Debug.Log("ACTIVE SPAWN FROM FOG");
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 else
                 {
-                    if (currentPassive != null) Destroy(currentPassive);
-                    if (currentActive != null) Destroy(currentActive);
+                    Debug.Log("PASSIVE SPAWN FROM FOG");
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (collectibleOccupant != null)
                 {
+                    Debug.Log("COLLECT SPAWN FROM FOG");
                     currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }
@@ -74,16 +75,19 @@ public class Tile : MonoBehaviour
             {
                 if (passiveOccupant != null)
                 {
+                    Debug.Log("PASSIVE SPAWN FROM FOG - NONOCEAN");
                     if (currentPassive != null) Destroy(currentPassive);
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (activeOccupant != null)
                 {
+                    Debug.Log("ACTIVE SPAWN FROM FOG - NONOCEAN");
                     if (currentActive != null) Destroy(currentActive);
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (collectibleOccupant != null)
                 {
+                    Debug.Log("COLLECT SPAWN FROM FOG - NONOCEAN");
                     if (currentCollectible != null) Destroy(currentCollectible);
                     currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
@@ -184,12 +188,10 @@ public class Tile : MonoBehaviour
                 {
                     FindFirstObjectByType<Snail>().isFrosted = false;
                     GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
-                    Debug.Log("Cracked");
                 }
                 else
                 {
                     FindFirstObjectByType<Snail>().isFrosted = true;
-                    Debug.Log("Frosted");
                 }
                 break;
             case TileType.Jungle:
@@ -224,23 +226,22 @@ public class Tile : MonoBehaviour
 
                 if(turnsUntilSwapCounter == 0)
                 {
-                    Debug.Log("Ocean motion");
                     turnsUntilSwapCounter = turnsUntilSwap;
                     traversable = !traversable;
                     if (!isInFogOfWar)
                     {
-                        SendToFog();
-                        isInFogOfWar = false;
+                        //SendToFog();
+                        //isInFogOfWar = false;
+                        if (currentPassive != null) Destroy(currentPassive);
+                        if (currentActive != null) Destroy(currentActive);
                         if (!traversable) // The passive is the water, the active is the one you can stand on
                         {
-                            if (currentPassive != null) Destroy(currentPassive);
-                            if (currentActive != null) Destroy(currentActive);
+                            Debug.Log("PASSIVE SPAWN FROM REFRESH");
                             currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                         }
                         else
                         {
-                            if (currentPassive != null) Destroy(currentPassive);
-                            if (currentActive != null) Destroy(currentActive);
+                            Debug.Log("ACTIVE SPAWN FROM REFRESH");
                             currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                         }
                     }
