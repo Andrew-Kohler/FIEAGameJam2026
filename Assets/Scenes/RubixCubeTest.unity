@@ -3397,9 +3397,9 @@ MonoBehaviour:
   crackedShell1: {fileID: 584165376}
   crackedShell2: {fileID: 1049943330}
   crackedShell3: {fileID: 428835465}
-  icyShell1: {fileID: 0}
-  icyShell2: {fileID: 0}
-  icyShell3: {fileID: 0}
+  icyShell1: {fileID: 584165376}
+  icyShell2: {fileID: 1589129280}
+  icyShell3: {fileID: 643355295}
 --- !u!1 &898412371
 GameObject:
   m_ObjectHideFlags: 0

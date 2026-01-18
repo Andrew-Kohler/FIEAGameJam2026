@@ -16,11 +16,13 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private GameObject model;
 
-    private bool isLerping = false;
+    public bool isLerping = false;
 
     private float sideFlag = 0;
 
     private bool initialUpdate = false;
+
+    public bool isFrosted = false;
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
