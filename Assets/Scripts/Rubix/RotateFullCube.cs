@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +18,10 @@ public class RotateFullCube : MonoBehaviour
     private InputAction click;
     bool startedDrag;
 
+    public List<Collider> rotationZones;
+    private Snail snail;
+
+
     private void OnEnable()
     {
         click = InputSystem.actions.FindAction("Click");
@@ -29,13 +35,14 @@ public class RotateFullCube : MonoBehaviour
 
     void Start()
     {
-        
+        snail = GetComponentInChildren<Snail>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Swipe();
+
+    Swipe();
 
         if (this.transform.rotation != target.transform.rotation) {
             var step = speed * Time.deltaTime;
@@ -56,6 +63,26 @@ public class RotateFullCube : MonoBehaviour
             secondPressPos = Mouse.current.position.ReadValue();
             currentSwipe = new Vector2(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
             currentSwipe.Normalize();
+
+            foreach (Collider zoneCollider in rotationZones)
+            {
+                if (zoneCollider == null) continue;
+
+                // Check if object is inside the zone bounds
+                if (zoneCollider.bounds.Contains(transform.position))
+                {
+                    int zoneFlag = zoneCollider.GetComponent<RotationZone>().flag;
+
+                    if (zoneFlag != null)
+                    {
+                        UnityEngine.Debug.Log("Set After Rotate" + snail.sideFlag);
+
+                        snail.sideFlag = zoneFlag;
+
+                        break; // stop at first zone found
+                    }
+                }
+            }
 
             if (LeftSwipe(currentSwipe))
             {
