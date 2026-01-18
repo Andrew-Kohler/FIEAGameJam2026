@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 
 public class CubeState : MonoBehaviour
 {
@@ -11,6 +12,16 @@ public class CubeState : MonoBehaviour
     public List<GameObject> rightTiles = new List<GameObject>();
     public List<GameObject> upTiles = new List<GameObject>();
     public List<GameObject> downTiles = new List<GameObject>();
+
+    private void OnEnable()
+    {
+        Tile.onRockImpact += RockImpact;
+    }
+
+    private void OnDisable()
+    {
+        Tile.onRockImpact -= RockImpact;
+    }
     void Start()
     {
         
@@ -55,5 +66,17 @@ public class CubeState : MonoBehaviour
                 
             }
         }
+    }
+
+    private void RockImpact()
+    {
+        StartCoroutine(DoRockImpact());
+    }
+
+    private IEnumerator DoRockImpact()
+    {
+        GetComponent<Animator>().Play("HoverRumble", 0, 0);
+        yield return new WaitForSeconds(1f);
+        GetComponent<Animator>().Play("HoverIdle", 0, 0);
     }
 }

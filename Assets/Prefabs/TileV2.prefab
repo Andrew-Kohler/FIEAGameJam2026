@@ -158,5 +158,11 @@ MonoBehaviour:
   traversable: 1
   passiveOccupant: {fileID: 0}
   activeOccupant: {fileID: 0}
-  seenMat: {fileID: 2100000, guid: 737f8ee190a8a754598d493334c539c0, type: 2}
-  fogMat: {fileID: 2100000, guid: 679fdd8432292db48b387618e3f1d235, type: 2}
+  collectibleOccupant: {fileID: 0}
+  turnsUntilSwap: 2
+  turnsUntilSwapCounter: 0
+  meteor: {fileID: 703933889672239205, guid: 37193d1ef651da3438777c55b83d1fe2, type: 3}
+  currentPassive: {fileID: 0}
+  currentActive: {fileID: 0}
+  currentCollectible: {fileID: 0}
+  hasRocket: 0
