@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Rendering.InspectorCurveEditor;
+using UnityEngine.SceneManagement;
 
 public class Tile : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
 
     public GameObject passiveOccupant; // Things that are intraversable. The snail cannot move onto a space with a passive occupant.
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
+    public GameObject collectibleOccupant;
 
     [Header("Ocean Data")]
     public int turnsUntilSwap = 2;
@@ -22,6 +23,9 @@ public class Tile : MonoBehaviour
 
     public GameObject currentPassive;
     public GameObject currentActive;
+    public GameObject currentCollectible;
+
+    public bool hasRocket = false;
 
     void Start()
     {
@@ -52,6 +56,10 @@ public class Tile : MonoBehaviour
                     if (currentActive != null) Destroy(currentActive);
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
+                if (collectibleOccupant != null)
+                {
+                    currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
             }
             else
             {
@@ -64,6 +72,11 @@ public class Tile : MonoBehaviour
                 {
                     if (currentActive != null) Destroy(currentActive);
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                if (collectibleOccupant != null)
+                {
+                    if (currentCollectible != null) Destroy(currentCollectible);
+                    currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }  
         }
@@ -80,7 +93,37 @@ public class Tile : MonoBehaviour
         {
             currentActive.GetComponent<Animator>().Play("Shrink",0,0);
         }
+        if (currentCollectible != null)
+        {
+            currentCollectible.GetComponent<Animator>().Play("Shrink", 0, 0);
+        }
         isInFogOfWar = true;
+    }
+
+    public void HideShipPiece()
+    {
+        if (collectibleOccupant != null)
+        {
+            Destroy(currentCollectible);
+            collectibleOccupant = null;
+        }
+    }
+
+    public void updateDesert()
+    {
+        if (currentActive == null)
+        {
+            float chance = Random.Range(0, 1.0f);
+            if (chance < .3f && GameManager.Instance.GetDustDevilCount() < 3)
+            {
+                if (!isInFogOfWar)
+                {
+                    GameManager.Instance.SetDustDevilCount(GameManager.Instance.GetDustDevilCount() + 1);
+                    if (currentActive != null) Destroy(currentActive);
+                    currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+            }
+        }
     }
 
     public void AssignType(TileType type)
@@ -89,22 +132,22 @@ public class Tile : MonoBehaviour
         switch (type)
         {
             case TileType.Volcano:
-                GetComponent<MeshRenderer>().material.color = Color.red;
+                GetComponent<MeshRenderer>().material.color = Color.darkRed;
                 break;
             case TileType.Snow:
-                GetComponent<MeshRenderer>().material.color = Color.white;
+                GetComponent<MeshRenderer>().material.color = Color.whiteSmoke;
                 break;
             case TileType.Jungle:
-                GetComponent<MeshRenderer>().material.color = Color.green;
+                GetComponent<MeshRenderer>().material.color = Color.darkOliveGreen;
                 break;
             case TileType.Wheat:
-                GetComponent<MeshRenderer>().material.color = Color.yellow;
+                GetComponent<MeshRenderer>().material.color = Color.goldenRod;
                 break;
             case TileType.Ocean:
-                GetComponent<MeshRenderer>().material.color = Color.blue;
+                GetComponent<MeshRenderer>().material.color = Color.cornflowerBlue;
                 break;
             case TileType.Desert:
-                GetComponent<MeshRenderer>().material.color = Color.orange;
+                GetComponent<MeshRenderer>().material.color = Color.orangeRed;
                 break;
             default:
                 break;
@@ -181,17 +224,38 @@ public class Tile : MonoBehaviour
                 }
                 break;
             case TileType.Desert:
-
-                if(currentActive == null)
+                if (currentActive != null)
                 {
-                    float chance = Random.Range(0, 1.0f);
-                    /*if(chance < .3f && )
-                    {
+                    Destroy(currentActive);
+                    GameManager.Instance.SetDustDevilCount(GameManager.Instance.GetDustDevilCount() - 1);
+                    // How do we get the player to a random, valid tile
 
-                    }*/
+                    CubeState cubeState = FindFirstObjectByType<CubeState>();
+
+                    List<GameObject> validTiles = new List<GameObject>();
+
+                    List<List<GameObject>> cubeSides = new List<List<GameObject>>()
+                    {
+                        cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
+                    };
+                    foreach (List<GameObject> faces in cubeSides)
+                    {
+                        foreach (GameObject face in faces)
+                        {
+                            if (face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != TileType.Desert)
+                            {
+                               validTiles.Add(face);
+                            }
+                        }
+                    }
+
+                    int index = Random.Range(0, validTiles.Count);
+
+                    // Waiting until Chrys is done to finish implementing this
                 }
 
-                break;
+
+                    break;
             default:
                 break;
         }

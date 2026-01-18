@@ -22,11 +22,18 @@ public class PlanetaryInitializer : MonoBehaviour
     [SerializeField] private GameObject oceanRecededPrefab;
 
     [Header("Snow Init Params")]
-    [SerializeField] private int numberOfIceTiles = 2;
-    [SerializeField] private int numberOfRocks = 3;
+    [SerializeField] private int numberOfRocks = 2;
+    [SerializeField] private List<GameObject> snowBlockerPrefabs;
+    [SerializeField] private GameObject snowyGroundPrefab;
 
     [Header("Desert Init Params")]
     [SerializeField] private int numberOfCacti = 2;
+
+    [Header("Collectable Init Params")]
+    [SerializeField] private GameObject shipFinPartPrefab;
+    [SerializeField] private GameObject shipWindowPartPrefab;
+    [SerializeField] private GameObject shipThingyPartPrefab;
+    [SerializeField] private GameObject crashedShipPrefab;
     void Start()
     {
         
@@ -54,6 +61,31 @@ public class PlanetaryInitializer : MonoBehaviour
             listOfTypes.RemoveAt(index); // Remove as we go to prevent dupes
         }
 
+        // Get a list of valid tiles for the ship pieces to spawn on
+        List<GameObject> validTiles = new List<GameObject>();
+
+        foreach (List<GameObject> faces in cubeSides)
+        {
+            foreach(GameObject face in faces)
+            {
+                if(face.GetComponent<Tile>().tileType == Tile.TileType.Ocean || (face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Wheat)){
+                    validTiles.Add(face);
+                }
+            }
+        }
+
+        int randomIndex1 = Random.Range(0, validTiles.Count);
+        validTiles[randomIndex1].GetComponent<Tile>().collectibleOccupant = shipFinPartPrefab;
+        validTiles.RemoveAt(randomIndex1);
+
+        int randomIndex2 = Random.Range(0, validTiles.Count);
+        validTiles[randomIndex2].GetComponent<Tile>().collectibleOccupant = shipThingyPartPrefab;
+        validTiles.RemoveAt(randomIndex2);
+
+        int randomIndex3 = Random.Range(0, validTiles.Count);
+        validTiles[randomIndex3].GetComponent<Tile>().collectibleOccupant = shipWindowPartPrefab;
+        validTiles.RemoveAt(randomIndex3);
+
     }
 
     /// <summary>
@@ -72,6 +104,14 @@ public class PlanetaryInitializer : MonoBehaviour
         switch (biomeType)
         {
             case Tile.TileType.Wheat:
+                for (int i = 0; i < tiles.Count; i++)
+                {
+                    if (i == 4)
+                    {
+                        tiles[4].GetComponent<Tile>().activeOccupant = crashedShipPrefab;
+                        tiles[4].GetComponent<Tile>().hasRocket = true;
+                    }
+                }
                 break;
             case Tile.TileType.Volcano:
                 int volcanoSpawn = Random.Range(0, 9);
@@ -84,7 +124,34 @@ public class PlanetaryInitializer : MonoBehaviour
                 }
                 break;
             case Tile.TileType.Snow:
+                List<int> snowTileList = new List<int>(); // Build a list with items representing the amount of each tile we need
+                for (int i = 0; i < numberOfRocks; i++)
+                {
+                    snowTileList.Add(0);
+                }
+                while (snowTileList.Count < 9)
+                {
+                    snowTileList.Add(1);
+                }
+
+                for (int m = 0; m < tiles.Count; m++)
+                {
+                    int index = Random.Range(0, snowTileList.Count);
+                    switch (snowTileList[index])
+                    {
+                        case 0:
+                            tiles[m].GetComponent<Tile>().passiveOccupant = snowBlockerPrefabs[Random.Range(0, snowBlockerPrefabs.Count)];
+                            break;
+                        case 1:
+                            tiles[m].GetComponent<Tile>().activeOccupant = snowyGroundPrefab;
+                            break;
+                        default:
+                            break;
+                    }
+                    snowTileList.RemoveAt(index); // Remove as we go, so we ultimately have just as much of everything as we need
+                }
                 break;
+
             case Tile.TileType.Jungle:
                 List<int> tileList = new List<int>(); // Build a list with items representing the amount of each tile we need
                 for (int i = 0; i < numberOfFogBushes; i++)

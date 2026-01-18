@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private bool isMovingSnail = true; // Controls whether left mose rotates the cube or moves the snail
     private bool isTurningLeft = true;  // Control variable for planetary rotations going in one of two directions
+    private bool isRotatingPiece = false;
 
     private int health = 3;
     private int maxHealth = 3;
@@ -102,11 +103,52 @@ public class GameManager : MonoBehaviour
         return activeDustDevils;
     }
 
+    public void SetDustDevilCount(int count)
+    {
+        activeDustDevils = count;
+    }
+
+    public bool GetIsRotatingPiece()
+    {
+        return isRotatingPiece;
+    }
+
+    public void SetRotatingPiece(bool val)
+    {
+        isRotatingPiece = val;
+    }
+
+    public int GetPiecesHeld()
+    {
+        return piecesHeld;
+    }
+
+    public int GetPiecesRetrieved()
+    {
+        return piecesRetrieved;
+    }
+
+    public void AddToPiecesRetrieved()
+    {
+        piecesRetrieved++;
+    }
+
+    public void AddToPiecesHeld()
+    {
+        piecesHeld++;
+    }
+
+    public void SubtractFromPiecesHeld()
+    {
+        piecesHeld--;
+    }
+
     public void ResetAllValues()
     {
         health = maxHealth;
         turnCount = 0;
         piecesRetrieved = 0;
+        piecesHeld = 0;
         activeDustDevils = 0;
     }
 }
