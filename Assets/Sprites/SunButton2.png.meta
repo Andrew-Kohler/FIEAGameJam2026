@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d62ce09d9d04fa94290de802406af1e4
+guid: f7940b3bb0352844981df91117dd8607
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ArrowDown_0
+      name: SunButton2_0
       rect:
         serializedVersion: 2
-        x: 758
-        y: 163
-        width: 426
-        height: 728
+        x: 604
+        y: 193
+        width: 713
+        height: 695
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f33320daff0fdf54cb493078d871bbcf
-      internalID: -741908883
+      spriteID: fabb354f9228e82428ef9abfc26ea503
+      internalID: 1753806188
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -160,7 +160,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      ArrowDown_0: -741908883
+      SunButton2_0: 1753806188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
