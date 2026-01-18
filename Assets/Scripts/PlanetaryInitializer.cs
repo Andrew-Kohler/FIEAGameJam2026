@@ -30,7 +30,6 @@ public class PlanetaryInitializer : MonoBehaviour
     [SerializeField] private GameObject snowyGroundPrefab;
     [SerializeField] private GameObject snowyRockPrefab;
 
-
     [Header("Desert Init Params")]
     [SerializeField] private int numberOfCacti = 2;
     [SerializeField] private GameObject cactiPrefab;
@@ -135,6 +134,10 @@ public class PlanetaryInitializer : MonoBehaviour
                     {
                         tiles[i].GetComponent<Tile>().passiveOccupant = volcanoPrefab;
                     }
+                    else
+                    {
+                        tiles[i].GetComponent<Tile>().cosmeticOccupant = lavaPoolPrefab;
+                    }
                 }
                 break;
             case Tile.TileType.Snow:
@@ -197,6 +200,7 @@ public class PlanetaryInitializer : MonoBehaviour
                             tiles[m].GetComponent<Tile>().passiveOccupant = treePrefab;
                             break;
                         case 2:
+                            tiles[m].GetComponent<Tile>().cosmeticOccupant = grassPrefab;
                             break;
                         default:
                             break;
@@ -206,6 +210,32 @@ public class PlanetaryInitializer : MonoBehaviour
 
                 break;
             case Tile.TileType.Desert:
+                List<int> desertTileList = new List<int>(); // Build a list with items representing the amount of each tile we need
+                for (int i = 0; i < numberOfCacti; i++)
+                {
+                    desertTileList.Add(0);
+                }
+                while (desertTileList.Count < 9)
+                {
+                    desertTileList.Add(1);
+                }
+
+                for (int m = 0; m < tiles.Count; m++)
+                {
+                    int index = Random.Range(0, desertTileList.Count);
+                    switch (desertTileList[index])
+                    {
+                        case 0:
+                            tiles[m].GetComponent<Tile>().activeOccupant = cactiPrefab;
+                            break;
+                        case 1:
+                            tiles[m].GetComponent<Tile>().cosmeticOccupant = rocksPrefab;
+                            break;
+                        default:
+                            break;
+                    }
+                    desertTileList.RemoveAt(index); // Remove as we go, so we ultimately have just as much of everything as we need
+                }
                 break;
             case Tile.TileType.Ocean:
                 for (int m = 0; m < tiles.Count; m++)

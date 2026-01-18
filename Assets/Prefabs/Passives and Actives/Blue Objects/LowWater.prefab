@@ -206,10 +206,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Tile
       objectReference: {fileID: 0}
-    - target: {fileID: 8791378004834060284, guid: d08e10b3bed08eb4cb8dbf1ccd22669b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1544137825251663484, guid: d08e10b3bed08eb4cb8dbf1ccd22669b, type: 3}
     m_RemovedGameObjects: []
