@@ -18,4 +18,9 @@ public class GameCameraMove : MonoBehaviour
         camAnim.SetTrigger("moveCam");
     }
 
+    public void EnableChallengeMode()
+    {
+        GameManager.Instance.challengeMode = true;
+    }
+
 }
