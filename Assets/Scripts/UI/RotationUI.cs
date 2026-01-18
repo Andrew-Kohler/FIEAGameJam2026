@@ -26,11 +26,14 @@ public class RotationUI : MonoBehaviour
     {
         primaryMenu.ToggleRotationMode();
         this.gameObject.SetActive(false);
+        GameManager.Instance.PREVENTCARCRASH = true;
 
         if (GameManager.Instance.challengeMode)
         {
             GameManager.Instance.challengeModeRotations--;
         }
+
+        
     }
 
     #region TOP AND BOT TURNS

@@ -25,19 +25,31 @@ public class PrimaryUI : MonoBehaviour
     public GameObject icyShell2;
     public GameObject icyShell3;
 
+    public AudioClip clip;
+    private AudioSource audioSource;
+
+    private bool playClipOnBoot = false;
+
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
-        GameManager.Instance.SetRotatingPiece(false);
+        //GameManager.Instance.SetRotatingPiece(false);
+        //playClipOnBoot = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       /* if (playClipOnBoot)
+        {
+            playClipOnBoot = false;
+            audioSource.PlayOneShot(clip);
+        }*/
         healthTempText.text = "Health = " + GameManager.Instance.GetHealth();
         if (GameManager.Instance.GetHealth() == 2 )
         {

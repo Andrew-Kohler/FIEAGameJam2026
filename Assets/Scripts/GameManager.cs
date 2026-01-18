@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public int challengeModeRotations = 7;
 
+    public bool PREVENTCARCRASH = false;
+
     public static GameManager Instance
     {
         get

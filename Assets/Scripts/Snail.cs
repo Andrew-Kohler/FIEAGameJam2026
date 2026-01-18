@@ -77,7 +77,7 @@ public class Snail : MonoBehaviour
             initialUpdate = true;
         }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame && GameManager.Instance.GetIsMovingSnail() && !isLerping)
+        if (Mouse.current.leftButton.wasPressedThisFrame && GameManager.Instance.GetIsMovingSnail() && !isLerping && !GameManager.Instance.PREVENTCARCRASH)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -86,7 +86,7 @@ public class Snail : MonoBehaviour
                 GameObject face = hit.collider.gameObject;
                 //UnityEngine.Debug.Log("ANDREW: " + Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true
-                    && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
+                    && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned && !GameManager.Instance.PREVENTCARCRASH)
                 {
                     float xDistance = currentTile.transform.position.x - face.transform.position.x;
                     float yDistance = currentTile.transform.position.y - face.transform.position.y;
@@ -356,8 +356,6 @@ public class Snail : MonoBehaviour
         transform.position = targetPosition;
         snailAnimator.SetBool("isLerping", false);
 
-        isLerping = false;
-
     }
 
     IEnumerator TurnOrder(GameObject face)
@@ -400,14 +398,16 @@ public class Snail : MonoBehaviour
         GameManager.Instance.IncrementTurnCount();
         // Iterate through all tiles, and if they are close enough, reveal them
         UpdateFogOfWar();
-        isLerping = false;
+
 
         // UNSTABLE MODE: A shift happens at the end of every turn!
         if (GameManager.Instance.challengeMode)
         {
             rotationUI.RandomRotation();
+            yield return new WaitForSeconds(2f);
         }
 
+        isLerping = false;
 
         yield return null;
 
