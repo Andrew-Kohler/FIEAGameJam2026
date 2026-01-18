@@ -13,7 +13,7 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private CubeState cubeState;
 
-    [SerializeField] private float lerpDuration = 1f;
+    [SerializeField] private float lerpDuration = 1.5f;
 
     [SerializeField] private GameObject model;
 
@@ -30,6 +30,9 @@ public class Snail : MonoBehaviour
     private bool initialUpdate = false;
 
     public bool isFrosted = false;
+
+    [SerializeField] private Animator snailAnimator;
+
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -52,7 +55,7 @@ public class Snail : MonoBehaviour
                 if (zoneFlag != null)
                 {
                     sideFlag = zoneFlag;
-                    UnityEngine.Debug.Log("INSIDE: " + zoneFlag);
+                    //UnityEngine.Debug.Log("INSIDE: " + zoneFlag);
 
                     break; // stop at first zone found
                 }
@@ -82,6 +85,12 @@ public class Snail : MonoBehaviour
 
                     UnityEngine.Debug.Log("X: " + xDistance + ", Y: " + yDistance + ", Z: " + zDistance);
 
+                    StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
+
+                    if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                        currentTile = face;
+                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
+
                     switch (sideFlag)
                     {
                         case 0:
@@ -109,17 +118,21 @@ public class Snail : MonoBehaviour
                             }
                             else if (xDistance == 0 && yDistance >= 0.4 && zDistance <= -0.4)
                             {
+                                snailAnimator.SetBool("isLerping", true);
                                 sideFlag = 2;
                                 //UnityEngine.Debug.Log("MOVE TO RIGHT: ");
                                 Vector3 currentEuler = new Vector3(0, -90, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
+
                             }
                             else if (xDistance <= -0.4 && yDistance >= 0.4 && zDistance == 0)
                             {
+                                snailAnimator.SetBool("isLerping", true);
                                 sideFlag = 1;
                                 //UnityEngine.Debug.Log("MOVE TO LEFT: ");
                                 Vector3 currentEuler = new Vector3(0, 0, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
+
                             }
                             break;
 
@@ -148,17 +161,21 @@ public class Snail : MonoBehaviour
                             }
                             else if (xDistance >= 0.4 && yDistance <= -0.4 && zDistance == 0)
                             {
+                                snailAnimator.SetBool("isLerping", true);
                                 sideFlag = 0;
                                 //UnityEngine.Debug.Log("MOVE TO TOP: ");
                                 Vector3 currentEuler = new Vector3(0, 180, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
+
                             }
                             else if (xDistance >= 0.4 && yDistance == 0 && zDistance <= -0.4)
                             {
+                                snailAnimator.SetBool("isLerping", true);
                                 sideFlag = 2;
                                 //UnityEngine.Debug.Log("MOVE TO RIGHT: ");
                                 Vector3 currentEuler = new Vector3(-90, -90, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
+
                             }
 
                             break;
@@ -187,17 +204,21 @@ public class Snail : MonoBehaviour
                             }
                             else if (xDistance == 0 && yDistance <= -0.4 && zDistance >= 0.4)
                             {
+                                snailAnimator.SetBool("isLerping", true);
                                 sideFlag = 0;
                                 //UnityEngine.Debug.Log("MOVE TO TOP: ");
                                 Vector3 currentEuler = new Vector3(180, -90, 180);
                                 transform.rotation = Quaternion.Euler(currentEuler);
+
                             }
                             else if (xDistance <= -0.4 && yDistance == 0 && zDistance >= 0.4)
                             {
+                                snailAnimator.SetBool("isLerping", true);
                                 sideFlag = 1;
                                 //UnityEngine.Debug.Log("MOVE TO LEFT: ");
                                 Vector3 currentEuler = new Vector3(90, 90, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
+
                             }
                             break;
 
@@ -297,15 +318,23 @@ public class Snail : MonoBehaviour
         isLerping = true;
         float time = 0;
         Vector3 startPosition = transform.position;
+        snailAnimator.SetFloat("LERPMove", 0);
 
         while (time < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            float t = time / duration;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+            snailAnimator.SetFloat("LERPMove", t);
+
 
             time += Time.deltaTime;
             yield return null;
         }
         transform.position = targetPosition;
+        snailAnimator.SetBool("isLerping", false);
+
+        isLerping = false;
 
     }
 
@@ -352,4 +381,6 @@ public class Snail : MonoBehaviour
         yield return null;
 
     }
+
+   
 }
