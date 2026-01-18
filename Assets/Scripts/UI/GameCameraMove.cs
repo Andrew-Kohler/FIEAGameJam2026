@@ -10,12 +10,12 @@ public class GameCameraMove : MonoBehaviour
 
     public void MoveCamera()
     {
+        TriggerGameCanvas.triggerCanvas = true;
+
         menuCanvas.SetActive(false);
 
         camAnim.GetComponent<Animator>();
         camAnim.SetTrigger("moveCam");
-
-        TriggerGameCanvas.triggerCanvas = true;
     }
 
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TriggerGameCanvas : MonoBehaviour
 {
-    public static bool triggerCanvas;
+    public static bool triggerCanvas = false;
     //public bool isDelayOver = false;
 
     public GameObject gameCanvas;
@@ -11,14 +11,12 @@ public class TriggerGameCanvas : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        triggerCanvas = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(Delay());
-
         if(triggerCanvas == true)
         {
             StartCoroutine(Delay());

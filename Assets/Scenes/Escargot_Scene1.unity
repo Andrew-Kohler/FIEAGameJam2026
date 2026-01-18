@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: f531e09e2ad2fb440b4eed7605863143, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 369b9ebe3a62b904dbc19bd332b44086, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -707,6 +707,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37468372}
   m_CullTransparentMesh: 1
+--- !u!1 &69679392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
+  m_PrefabInstance: {fileID: 1619699882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &69679394
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69679392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 546a0a9d1fcb56e44b30b492a38b53cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &75780986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,7 +2566,7 @@ RectTransform:
   m_GameObject: {fileID: 301491209}
   m_LocalRotation: {x: 0.000000007450581, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.000029104509}
-  m_LocalScale: {x: 4.64, y: 4.64, z: 4.64}
+  m_LocalScale: {x: 3.35, y: 3.35, z: 3.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1333610724}
@@ -2647,7 +2674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4a84f9fa5ade86e4eb09c65358ad1e2b, type: 3}
+  m_Sprite: {fileID: 2142960166, guid: 4a84f9fa5ade86e4eb09c65358ad1e2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6603,8 +6630,8 @@ RectTransform:
   - {fileID: 312323322}
   - {fileID: 115082741}
   - {fileID: 499414080}
-  - {fileID: 1333610724}
   - {fileID: 1390417223}
+  - {fileID: 1333610724}
   m_Father: {fileID: 711535802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11288,7 +11315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ad2a0b2867f6254788e669f1ceb7b9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d715f4fb392effa488340588e5c04856, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11981,13 +12008,21 @@ MonoBehaviour:
   volcanoPrefab: {fileID: 304155157287545397, guid: 36527b65e1b23c64a9d7ecb047af98f3, type: 3}
   numberOfTrees: 3
   numberOfFogBushes: 2
-  treePrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
-  bushPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
+  treePrefab: {fileID: 304155157287545397, guid: d2fab05490d19e44d96b6ac47c575c30, type: 3}
+  bushPrefab: {fileID: 304155157287545397, guid: eca3950a17dbfe644a5ce0cead20e610, type: 3}
   oceanRisenPrefab: {fileID: 304155157287545397, guid: 13c98bd73d4d51b4e90a151a888026b6, type: 3}
   oceanRecededPrefab: {fileID: 304155157287545397, guid: 3bed56a2c39f7ea4995d72f2372ab171, type: 3}
-  numberOfIceTiles: 2
   numberOfRocks: 3
+  snowBlockerPrefabs:
+  - {fileID: 304155157287545397, guid: 9eb78334f2587594db55f07ce90a30d6, type: 3}
+  - {fileID: 304155157287545397, guid: 47596bb01c197d5408dbabbf792c476a, type: 3}
+  - {fileID: 304155157287545397, guid: 4bb9655c34d00b4408db64164af0420e, type: 3}
+  snowyGroundPrefab: {fileID: 304155157287545397, guid: 719cc546850f0a54daad7e2e181dd8c6, type: 3}
   numberOfCacti: 2
+  shipFinPartPrefab: {fileID: 304155157287545397, guid: 4bdf35e44992bb54cafb6879ed97079a, type: 3}
+  shipWindowPartPrefab: {fileID: 304155157287545397, guid: df959e01bb85b7a46aa6edfd5bb97ad5, type: 3}
+  shipThingyPartPrefab: {fileID: 304155157287545397, guid: 21af0029027ac6046a2474c685438330, type: 3}
+  crashedShipPrefab: {fileID: 304155157287545397, guid: a18b855a43ccbf246a6e590744388178, type: 3}
 --- !u!4 &1406528990
 Transform:
   m_ObjectHideFlags: 0
@@ -13016,15 +13051,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.2
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.31
+      value: 18.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -80
+      value: -51.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13065,7 +13100,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 69679394}
   m_SourcePrefab: {fileID: 100100000, guid: d25803056dd3c1b47b5499c42de69d34, type: 3}
 --- !u!1001 &1635163642
 PrefabInstance:
@@ -13165,7 +13203,7 @@ RectTransform:
   m_GameObject: {fileID: 1635757368}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710677, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.000008430778}
-  m_LocalScale: {x: 4.64, y: 4.64, z: 4.64}
+  m_LocalScale: {x: 3.35, y: 3.35, z: 3.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1333610724}
@@ -13273,7 +13311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e906b99e93868e4686d0ebb6a4b5a96, type: 3}
+  m_Sprite: {fileID: 2142960166, guid: 4a84f9fa5ade86e4eb09c65358ad1e2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14993,6 +15031,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9071431117898438920, guid: df1a600a3fba76542bc0e15b3378a227, type: 3}
   m_PrefabInstance: {fileID: 1989181061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1923092075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4807828697536328330, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+  m_PrefabInstance: {fileID: 5758911243268826808}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1944744614
 GameObject:
@@ -16896,6 +16939,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 1923092075}
     - target: {fileID: 8957126428512261352, guid: 1684614c90c9fd34c9ccdacdfb40be6f, type: 3}
       propertyPath: cubeState
       value: 

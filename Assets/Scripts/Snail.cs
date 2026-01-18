@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Rendering.InspectorCurveEditor;
+using UnityEngine.ProBuilder;
+using UnityEngine.SceneManagement;
 
 public class Snail : MonoBehaviour
 {
@@ -16,9 +14,13 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private float lerpDuration = 1f;
 
+    [SerializeField] private GameObject model;
+
     private bool isLerping = false;
 
     private float sideFlag = 0;
+
+    private bool initialUpdate = false;
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -29,6 +31,12 @@ public class Snail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!initialUpdate)
+        {
+            UpdateFogOfWar();
+            initialUpdate = true;
+        }
+
         if (Mouse.current.leftButton.wasPressedThisFrame && GameManager.Instance.GetIsMovingSnail() && !isLerping)
         {
             RaycastHit hit;
@@ -38,7 +46,7 @@ public class Snail : MonoBehaviour
                 GameObject face = hit.collider.gameObject;
                 //UnityEngine.Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
-                    && face.GetComponent<Tile>().passiveOccupant == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
+                    && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
                     float yDistance = currentTile.transform.position.y - face.transform.position.y;
                     float xDistance = currentTile.transform.position.x - face.transform.position.x;
@@ -177,10 +185,9 @@ public class Snail : MonoBehaviour
 
                     if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                     currentTile = face;
-                    face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
 
-                    // Iterate through all tiles, and if they are close enough, reveal them
-                    UpdateFogOfWar();
+                    StartCoroutine(TurnOrder(face));
+                   
                 }
             }
         }
@@ -207,6 +214,50 @@ public class Snail : MonoBehaviour
         }
     }
 
+    void UpdateOcean()
+    {
+        List<List<GameObject>> cubeSides = new List<List<GameObject>>()
+                {
+                    cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
+                };
+
+        // If the face exists within a side
+        foreach (List<GameObject> cubeSide in cubeSides)
+        {
+            foreach (GameObject face in cubeSide)
+            {
+                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                {
+                    {
+                        face.GetComponent<Tile>().ProcTile();
+                    }
+                }
+            }
+        }
+    }
+
+    void UpdateDesert()
+    {
+        List<List<GameObject>> cubeSides = new List<List<GameObject>>()
+                {
+                    cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
+                };
+
+        // If the face exists within a side
+        foreach (List<GameObject> cubeSide in cubeSides)
+        {
+            foreach (GameObject face in cubeSide)
+            {
+                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                {
+                    {
+                        face.GetComponent<Tile>().updateDesert();
+                    }
+                }
+            }
+        }
+    }
+
     public GameObject GetCurrentTile()
     {
         return currentTile;
@@ -226,8 +277,55 @@ public class Snail : MonoBehaviour
             yield return null;
         }
         transform.position = targetPosition;
-        isLerping = false;
 
-        GameManager.Instance.IncrementTurnCount();
+    }
+
+    IEnumerator TurnOrder(GameObject face)
+    {
+        // Iterate through all tiles, and if they are close enough, reveal them
+        UpdateFogOfWar();
+        if (face.GetComponent<Tile>().collectibleOccupant)
+        {
+            face.GetComponent<Tile>().HideShipPiece();
+            GameManager.Instance.AddToPiecesHeld();
+        }
+
+        if (face.GetComponent<Tile>().hasRocket)
+        {
+            model.SetActive(false);
+            if (GameManager.Instance.GetPiecesHeld() > 0)
+            {
+                int pieces = GameManager.Instance.GetPiecesHeld();
+                for (int i = 0; i < pieces; i++)
+                {
+                    GameManager.Instance.SubtractFromPiecesHeld();
+                    GameManager.Instance.AddToPiecesRetrieved();
+                }
+            }
+
+            if (GameManager.Instance.GetPiecesRetrieved() == 3)
+            {
+                GameManager.Instance.ResetAllValues();
+                SceneManager.LoadScene(0);
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+            UpdateOcean();
+            UpdateDesert();
+
+            yield return new WaitForSeconds(1f);
+            face.GetComponent<Tile>().ProcTile();
+
+            yield return new WaitForSeconds(1f);
+
+            GameManager.Instance.IncrementTurnCount();
+            isLerping = false;
+
+            yield return null;
+        }
+
+        
     }
 }
