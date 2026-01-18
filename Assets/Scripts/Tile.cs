@@ -16,6 +16,7 @@ public class Tile : MonoBehaviour
     public GameObject passiveOccupant; // Things that are intraversable. The snail cannot move onto a space with a passive occupant.
     public GameObject activeOccupant;  // Things that move around the stage (that aren't the snail). These are...just dust devils.
     public GameObject collectibleOccupant;
+    public GameObject cosmeticOccupant;
     public int collectibleNumber;
 
     [Header("Ocean Data")]
@@ -29,13 +30,12 @@ public class Tile : MonoBehaviour
     public GameObject currentPassive;
     public GameObject currentActive;
     public GameObject currentCollectible;
+    public GameObject currentCosmetic;
 
     public bool hasRocket = false;
 
     public delegate void OnRockImpact();
     public static event OnRockImpact onRockImpact;
-
-
 
     void Start()
     {
@@ -58,17 +58,14 @@ public class Tile : MonoBehaviour
                 if (currentActive != null) Destroy(currentActive);
                 if (traversable)
                 {
-                    Debug.Log("ACTIVE SPAWN FROM FOG");
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 else
                 {
-                    Debug.Log("PASSIVE SPAWN FROM FOG");
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (collectibleOccupant != null)
                 {
-                    Debug.Log("COLLECT SPAWN FROM FOG");
                     currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }
@@ -76,21 +73,23 @@ public class Tile : MonoBehaviour
             {
                 if (passiveOccupant != null)
                 {
-                    Debug.Log("PASSIVE SPAWN FROM FOG - NONOCEAN");
                     if (currentPassive != null) Destroy(currentPassive);
                     currentPassive = Instantiate(passiveOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (activeOccupant != null)
                 {
-                    Debug.Log("ACTIVE SPAWN FROM FOG - NONOCEAN");
                     if (currentActive != null) Destroy(currentActive);
                     currentActive = Instantiate(activeOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
                 if (collectibleOccupant != null)
                 {
-                    Debug.Log("COLLECT SPAWN FROM FOG - NONOCEAN");
                     if (currentCollectible != null) Destroy(currentCollectible);
                     currentCollectible = Instantiate(collectibleOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
+                }
+                if (cosmeticOccupant != null)
+                {
+                    if (currentCosmetic != null) Destroy(currentCosmetic);
+                    currentCosmetic = Instantiate(cosmeticOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
             }  
         }
@@ -110,6 +109,10 @@ public class Tile : MonoBehaviour
         if (currentCollectible != null)
         {
             currentCollectible.GetComponent<Animator>().Play("Shrink", 0, 0);
+        }
+        if (currentCosmetic != null)
+        {
+            currentCosmetic.GetComponent<Animator>().Play("Shrink", 0, 0);
         }
         isInFogOfWar = true;
     }
