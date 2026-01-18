@@ -91,7 +91,14 @@ public class Tile : MonoBehaviour
                     if (currentCosmetic != null) Destroy(currentCosmetic);
                     currentCosmetic = Instantiate(cosmeticOccupant, this.transform.position, this.transform.parent.rotation, this.transform.parent);
                 }
-            }  
+            }
+            if (transform.parent.GetComponentsInChildren<ParticleSystem>() != null)
+            {
+                foreach (ParticleSystem p in transform.parent.GetComponentsInChildren<ParticleSystem>())
+                {
+                    p.Play();
+                }
+            }
         }
         
     }
@@ -113,6 +120,14 @@ public class Tile : MonoBehaviour
         if (currentCosmetic != null)
         {
             currentCosmetic.GetComponent<Animator>().Play("Shrink", 0, 0);
+        }
+        if(transform.parent.GetComponentsInChildren<ParticleSystem>() != null)
+        {
+            foreach(ParticleSystem p in transform.parent.GetComponentsInChildren<ParticleSystem>())
+            {
+                p.Clear();
+                p.Pause();
+            }
         }
         isInFogOfWar = true;
     }
@@ -210,13 +225,13 @@ public class Tile : MonoBehaviour
                 float change = Random.Range(0, 1.001f);
                 if (change < chanceToMeteor)
                 {
-                    StartCoroutine(DoMagmaBall());
+                    StartCoroutine(DoMagmaBall(true));
 
                 }
                 float change2 = Random.Range(0, 1.001f);
                 if (change < .05)
                 {
-                    StartCoroutine(DoMagmaBall());
+                    StartCoroutine(DoMagmaBall(false));
 
                 }
                 FindFirstObjectByType<Snail>().isFrosted = false;
@@ -275,8 +290,12 @@ public class Tile : MonoBehaviour
         }
     }
 
-    IEnumerator DoMagmaBall()
+    IEnumerator DoMagmaBall(bool immediate)
     {
+        if (!immediate)
+        {
+            yield return new WaitForSeconds(.9f);
+        }
         // TODO: Make a nice timed-out coroutine doing an animation for this tile
         Vector3 playerPos = FindFirstObjectByType<Snail>().transform.position;
 
@@ -292,6 +311,7 @@ public class Tile : MonoBehaviour
         Destroy(newMeteor);
         GameManager.Instance.SetHealth(GameManager.Instance.GetHealth() - 1);
         onRockImpact?.Invoke();
+
         yield return null;
     }
 }
