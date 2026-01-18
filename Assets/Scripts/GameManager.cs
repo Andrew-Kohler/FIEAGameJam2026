@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         }
         if (Keyboard.current.wKey.wasPressedThisFrame)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         this.health = health;
         if (health == 0)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             Timer.isTimerActive = false;
         }
     }
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
         piecesRetrieved++;
         if (piecesRetrieved == 3)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
             Timer.isTimerActive = false;
         }
     }
