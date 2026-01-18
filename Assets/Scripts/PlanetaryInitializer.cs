@@ -176,17 +176,17 @@ public class PlanetaryInitializer : MonoBehaviour
                 {
                     tileList.Add(0);
                 }
-                Debug.Log(tileList.Count);
+                //Debug.Log(tileList.Count);
                 for (int j = 0; j < numberOfTrees; j++)
                 {
                     tileList.Add(1);
                 }
-                Debug.Log(tileList.Count);
+                //Debug.Log(tileList.Count);
                 while(tileList.Count < 9)
                 {
                     tileList.Add(2);
                 }
-                Debug.Log(tileList.Count);
+                //Debug.Log(tileList.Count);
 
                 // Spawn all these tiles
                 for(int m = 0; m < tiles.Count; m++)
