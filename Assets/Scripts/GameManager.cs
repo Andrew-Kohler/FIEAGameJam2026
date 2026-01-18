@@ -49,7 +49,15 @@ public class GameManager : MonoBehaviour
         {
             isMovingSnail = !isMovingSnail;
         }
-       
+        if (Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene(3);
+            ResetAllValues();
+        }
     }
 
     public bool GetIsMovingSnail()
