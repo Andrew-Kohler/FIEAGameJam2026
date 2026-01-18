@@ -28,6 +28,8 @@ public class PlanetaryInitializer : MonoBehaviour
     [SerializeField] private int numberOfRocks = 2;
     [SerializeField] private List<GameObject> snowBlockerPrefabs;
     [SerializeField] private GameObject snowyGroundPrefab;
+    [SerializeField] private GameObject snowyRockPrefab;
+
 
     [Header("Desert Init Params")]
     [SerializeField] private int numberOfCacti = 2;
