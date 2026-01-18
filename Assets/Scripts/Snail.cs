@@ -17,6 +17,8 @@ public class Snail : MonoBehaviour
     [SerializeField] private float lerpDuration = 1f;
 
     private bool isLerping = false;
+
+    private float sideFlag = 0;
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -40,24 +42,136 @@ public class Snail : MonoBehaviour
                 {
                     float yDistance = currentTile.transform.position.y - face.transform.position.y;
                     float xDistance = currentTile.transform.position.x - face.transform.position.x;
-                    float ZDistance = currentTile.transform.position.z - face.transform.position.z;
+                    float zDistance = currentTile.transform.position.z - face.transform.position.z;
 
-                    UnityEngine.Debug.Log("DISTANCE: " + yDistance);
-                    if (yDistance == 0.5)
+                    UnityEngine.Debug.Log("X DISTANCE: " + xDistance + ", Y DISTANCE: " + yDistance + ", Z DISTANCE: " + zDistance);
+                    UnityEngine.Debug.Log("Flag: " + sideFlag);
+                    switch (sideFlag)
                     {
-                        UnityEngine.Debug.Log("UP: " + yDistance);
-                        Vector3 currentEuler = transform.eulerAngles;
-                        currentEuler.x = 90;
-                        transform.rotation = Quaternion.Euler(currentEuler);
-                    }
-                    else if (yDistance == -0.5)
-                    {
-                        UnityEngine.Debug.Log("DOWN: " + yDistance);
-                        Vector3 currentEuler = transform.eulerAngles;
-                        currentEuler.x = - 90;
-                        transform.rotation = Quaternion.Euler(currentEuler);
-                    }
+                        case 0:
+                            UnityEngine.Debug.Log("TOP!!!!");
 
+                            if (zDistance >= 0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(0, 90, 0); 
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (zDistance <= -0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(0, -90, 0); 
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance >= 0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(0, 180, 0); 
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance <= -0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(0, 0, 0); 
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance == 0 && yDistance >= 0.4 && zDistance <= -0.4) 
+                            {
+                                sideFlag = 2;
+                                UnityEngine.Debug.Log("MOVE TO RIGHT: ");
+                                Vector3 currentEuler = new Vector3(0, -90, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance <= -0.4 && yDistance >= 0.4 && zDistance == 0)
+                            {
+                                sideFlag = 1;
+                                UnityEngine.Debug.Log("MOVE TO LEFT: ");
+                                Vector3 currentEuler = new Vector3(0, 0, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            break;
+
+                        case 1:
+                            UnityEngine.Debug.Log("LEFT!!!!");
+
+                            if (yDistance >= 0.9)
+                            {
+                                UnityEngine.Debug.Log("DOWN!!!!");
+
+                                Vector3 currentEuler = new Vector3(0, 0, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (yDistance <= -0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(180, 0, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (zDistance >= 0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(90, 0, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (zDistance <= -0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(-90, 0, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance >= 0.4 && yDistance <= -0.4 && zDistance == 0)
+                            {
+                                sideFlag = 0;
+                                UnityEngine.Debug.Log("MOVE TO TOP: ");
+                                Vector3 currentEuler = new Vector3(0, 180, 0);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance >= 0.4 && yDistance == 0 && zDistance <= -0.4)
+                            {
+                                sideFlag = 2;
+                                UnityEngine.Debug.Log("MOVE TO RIGHT: ");
+                                Vector3 currentEuler = new Vector3(-90, -90, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+
+                            break;
+                        case 2:
+                            UnityEngine.Debug.Log("RIGHT!!!!");
+
+                            if (xDistance >= 0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(-90, -90, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance <= -0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(90, -90, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (yDistance >= 0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(0, -90, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (yDistance <= -0.9)
+                            {
+                                Vector3 currentEuler = new Vector3(180, -90, -90);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance == 0 && yDistance <= -0.4 && zDistance >= 0.4)
+                            {
+                                sideFlag = 0;
+                                UnityEngine.Debug.Log("MOVE TO TOP: ");
+                                Vector3 currentEuler = new Vector3(180, -90, 180);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            else if (xDistance <= -0.4 && yDistance == 0 && zDistance >= 0.4)
+                            {
+                                sideFlag = 1;
+                                UnityEngine.Debug.Log("MOVE TO LEFT: ");
+                                Vector3 currentEuler = new Vector3(90, 90, 0);
+                                transform.rotation = Quaternion.Euler(currentEuler);
+                            }
+                            break;
+
+                        default:
+                            UnityEngine.Debug.Log("How did we get here? sideFlag should be 0-2");
+                            break;
+
+                    }
 
                     StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
 
