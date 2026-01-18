@@ -109,12 +109,14 @@ public class PivotRotation : MonoBehaviour
         if(Quaternion.Angle(transform.localRotation, targetQuaternion) <= 1)
         {
             transform.localRotation = targetQuaternion;
-
-            // Unparent the cubes!
-            cubeState.PutDown(activeSide, transform.parent);
-            readCube.ReadState();
             autoRotate = false;
             dragging = false;
+
+            // Unparent the cubes!
+            readCube.ReadState();
+            cubeState.PutDown(activeSide, transform.parent);
+
+
         }
     }
 

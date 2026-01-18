@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2130241153580050851}
   - component: {fileID: 2292512055836806543}
   - component: {fileID: 1684600903069013862}
-  - component: {fileID: 1544137825251663484}
   m_Layer: 8
   m_Name: Water Tile
   m_TagString: Untagged
@@ -109,28 +108,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1544137825251663484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8791378004834060284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8cf6c5754e750544a51436d592a6a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileType: 0
-  isInFogOfWar: 1
-  traversable: 1
-  passiveOccupant: {fileID: 0}
-  activeOccupant: {fileID: 0}
-  collectibleOccupant: {fileID: 0}
-  turnsUntilSwap: 2
-  turnsUntilSwapCounter: 0
-  meteor: {fileID: 0}
-  currentPassive: {fileID: 0}
-  currentActive: {fileID: 0}
-  currentCollectible: {fileID: 0}
-  hasRocket: 0

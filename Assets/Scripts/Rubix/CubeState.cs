@@ -13,6 +13,7 @@ public class CubeState : MonoBehaviour
     public List<GameObject> upTiles = new List<GameObject>();
     public List<GameObject> downTiles = new List<GameObject>();
 
+    public Snail snail;
     private void OnEnable()
     {
         Tile.onRockImpact += RockImpact;
@@ -45,25 +46,29 @@ public class CubeState : MonoBehaviour
             }
 
             // If the player is on this face, or on its rim, they get carried
-            if (face == FindFirstObjectByType<Snail>().GetCurrentTile() || Vector3.Distance(face.transform.position, FindFirstObjectByType<Snail>().GetCurrentTile().transform.position) < 0.75f)
+            if (face == snail.GetCurrentTile() || Vector3.Distance(face.transform.position, snail.GetCurrentTile().transform.position) < 0.75f)
             {
-                FindFirstObjectByType<Snail>().gameObject.transform.parent = cubeSide[4].transform.parent.transform.parent;
+                snail.gameObject.transform.parent = cubeSide[4].transform.parent.transform.parent;
             }
         }
-        
+
+        Debug.Log(cubeSide[4].transform.parent.transform.parent.name);
         cubeSide[4].transform.parent.transform.parent.GetComponent<PivotRotation>().Rotate(cubeSide);
     }
 
     public void PutDown(List<GameObject> littleCubes, Transform pivot)
     {
-        FindFirstObjectByType<Snail>().gameObject.transform.parent = this.GetComponentInChildren<SelectFace>().gameObject.transform;
-        FindFirstObjectByType<Snail>().UpdateFogOfWar();
+        snail.gameObject.transform.parent = this.GetComponentInChildren<SelectFace>().gameObject.transform;
+        snail.UpdateFogOfWar();
+
         foreach (GameObject littleCube in littleCubes)
         {
             if (littleCube != littleCubes[4])
             {
+                Debug.Log("Parent before " + littleCube.transform.parent.transform.parent.transform.parent.name);
                 littleCube.transform.parent.transform.parent.transform.parent = pivot;
-                
+                Debug.Log("Parent after " + littleCube.transform.parent.transform.parent.transform.parent.name);
+
             }
         }
     }

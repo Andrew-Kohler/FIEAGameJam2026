@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
+using static Tile;
 
 public class Snail : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Snail : MonoBehaviour
     [SerializeField] private GameObject currentTile;
 
     [SerializeField] private CubeState cubeState;
+    private ReadCube readCube;
 
     [SerializeField] private float lerpDuration = 1f;
 
@@ -35,6 +37,7 @@ public class Snail : MonoBehaviour
         UpdateFogOfWar(); // Need to do this at start of round
         Vector3 newRotation = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(newRotation);
+        readCube = FindFirstObjectByType<ReadCube>();
     }
 
     // Update is called once per frame
@@ -225,6 +228,8 @@ public class Snail : MonoBehaviour
 
     public void UpdateFogOfWar()
     {
+        readCube = FindFirstObjectByType<ReadCube>();
+        readCube.ReadState();
         List<List<GameObject>> cubeSides = new List<List<GameObject>>()
                 {
                     cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
@@ -235,16 +240,23 @@ public class Snail : MonoBehaviour
         {
             foreach (GameObject face in cubeSide)
             {
-                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                if (face.GetComponentInChildren<Tile>() != null)
                 {
-                    face.GetComponent<Tile>().RevealFromFog();
+                    if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                    {
+                        //Debug.Log("NAME: " + face.name + " " + face.gameObject.transform.parent.name + " " + face.gameObject.transform.parent.transform.parent.name);
+                        face.GetComponentInChildren<Tile>().RevealFromFog();
+                    }
                 }
+                
             }
         }
     }
 
     void UpdateOcean()
     {
+        readCube = FindFirstObjectByType<ReadCube>();
+        readCube.ReadState();
         List<List<GameObject>> cubeSides = new List<List<GameObject>>()
                 {
                     cubeState.upTiles, cubeState.downTiles, cubeState.leftTiles, cubeState.rightTiles, cubeState.frontTiles, cubeState.backTiles
@@ -255,11 +267,16 @@ public class Snail : MonoBehaviour
         {
             foreach (GameObject face in cubeSide)
             {
-                if (face.GetComponent<Tile>().tileType == Tile.TileType.Ocean)
+                if (face.GetComponentInChildren<Tile>() != null)
                 {
+                    if(face.GetComponentInChildren<Tile>().tileType == Tile.TileType.Ocean)
                     {
-                        face.GetComponent<Tile>().TickDownOceanTile();
+                        face.GetComponentInChildren<Tile>().TickDownOceanTile();
                     }
+                }
+                else
+                {
+                    Debug.Log("Face without a tile" + face.name + " " + face.gameObject.transform.parent.name + " " + face.gameObject.transform.parent.transform.parent.name);
                 }
             }
         }
