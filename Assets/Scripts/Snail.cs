@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,15 @@ public class Snail : MonoBehaviour
 
     [SerializeField] private GameObject model;
 
-    public bool isLerping = false;
+    private int sideFlag = 0;
+    // Top = 0, Left = 1, Right = 2, Bottom = 3, Back Left = 4, Back Right = 5
 
-    private float sideFlag = 0;
+    public event Action<int> OnZoneEntered;
+    public event Action<int> OnZoneExited;
+
+    public List<Collider> rotationZones;
+
+    public bool isLerping = false;
 
     private bool initialUpdate = false;
 
@@ -26,13 +33,32 @@ public class Snail : MonoBehaviour
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
-        Vector3 newRotation = new Vector3(0,0,0);
+        Vector3 newRotation = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(newRotation);
     }
 
     // Update is called once per frame
     void Update()
     {
+        foreach (Collider zoneCollider in rotationZones)
+        {
+            if (zoneCollider == null) continue;
+
+            // Check if object is inside the zone bounds
+            if (zoneCollider.bounds.Contains(transform.position))
+            {
+                int zoneFlag = zoneCollider.GetComponent<RotationZone>().flag;
+
+                if (zoneFlag != null)
+                {
+                    sideFlag = zoneFlag;
+                    UnityEngine.Debug.Log("INSIDE: " + zoneFlag);
+
+                    break; // stop at first zone found
+                }
+            }
+        }
+
         if (!initialUpdate)
         {
             UpdateFogOfWar();
@@ -47,15 +73,15 @@ public class Snail : MonoBehaviour
             {
                 GameObject face = hit.collider.gameObject;
                 //UnityEngine.Debug.Log(Vector3.Distance(currentTile.transform.position, face.transform.position));
-                if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true 
+                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true
                     && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
                 {
-                    float yDistance = currentTile.transform.position.y - face.transform.position.y;
                     float xDistance = currentTile.transform.position.x - face.transform.position.x;
+                    float yDistance = currentTile.transform.position.y - face.transform.position.y;
                     float zDistance = currentTile.transform.position.z - face.transform.position.z;
 
-                    UnityEngine.Debug.Log("X DISTANCE: " + xDistance + ", Y DISTANCE: " + yDistance + ", Z DISTANCE: " + zDistance);
-                    UnityEngine.Debug.Log("Flag: " + sideFlag);
+                    UnityEngine.Debug.Log("X: " + xDistance + ", Y: " + yDistance + ", Z: " + zDistance);
+
                     switch (sideFlag)
                     {
                         case 0:
@@ -63,35 +89,35 @@ public class Snail : MonoBehaviour
 
                             if (zDistance >= 0.9)
                             {
-                                Vector3 currentEuler = new Vector3(0, 90, 0); 
+                                Vector3 currentEuler = new Vector3(0, 90, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
                             else if (zDistance <= -0.9)
                             {
-                                Vector3 currentEuler = new Vector3(0, -90, 0); 
+                                Vector3 currentEuler = new Vector3(0, -90, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
                             else if (xDistance >= 0.9)
                             {
-                                Vector3 currentEuler = new Vector3(0, 180, 0); 
+                                Vector3 currentEuler = new Vector3(0, 180, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
                             else if (xDistance <= -0.9)
                             {
-                                Vector3 currentEuler = new Vector3(0, 0, 0); 
+                                Vector3 currentEuler = new Vector3(0, 0, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
-                            else if (xDistance == 0 && yDistance >= 0.4 && zDistance <= -0.4) 
+                            else if (xDistance == 0 && yDistance >= 0.4 && zDistance <= -0.4)
                             {
                                 sideFlag = 2;
-                                UnityEngine.Debug.Log("MOVE TO RIGHT: ");
+                                //UnityEngine.Debug.Log("MOVE TO RIGHT: ");
                                 Vector3 currentEuler = new Vector3(0, -90, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
                             else if (xDistance <= -0.4 && yDistance >= 0.4 && zDistance == 0)
                             {
                                 sideFlag = 1;
-                                UnityEngine.Debug.Log("MOVE TO LEFT: ");
+                                //UnityEngine.Debug.Log("MOVE TO LEFT: ");
                                 Vector3 currentEuler = new Vector3(0, 0, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
@@ -102,8 +128,6 @@ public class Snail : MonoBehaviour
 
                             if (yDistance >= 0.9)
                             {
-                                UnityEngine.Debug.Log("DOWN!!!!");
-
                                 Vector3 currentEuler = new Vector3(0, 0, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
@@ -125,21 +149,21 @@ public class Snail : MonoBehaviour
                             else if (xDistance >= 0.4 && yDistance <= -0.4 && zDistance == 0)
                             {
                                 sideFlag = 0;
-                                UnityEngine.Debug.Log("MOVE TO TOP: ");
+                                //UnityEngine.Debug.Log("MOVE TO TOP: ");
                                 Vector3 currentEuler = new Vector3(0, 180, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
                             else if (xDistance >= 0.4 && yDistance == 0 && zDistance <= -0.4)
                             {
                                 sideFlag = 2;
-                                UnityEngine.Debug.Log("MOVE TO RIGHT: ");
+                                //UnityEngine.Debug.Log("MOVE TO RIGHT: ");
                                 Vector3 currentEuler = new Vector3(-90, -90, -90);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
 
                             break;
                         case 2:
-                            UnityEngine.Debug.Log("RIGHT!!!!");
+                            //UnityEngine.Debug.Log("RIGHT!!!!");
 
                             if (xDistance >= 0.9)
                             {
@@ -164,14 +188,14 @@ public class Snail : MonoBehaviour
                             else if (xDistance == 0 && yDistance <= -0.4 && zDistance >= 0.4)
                             {
                                 sideFlag = 0;
-                                UnityEngine.Debug.Log("MOVE TO TOP: ");
+                                //UnityEngine.Debug.Log("MOVE TO TOP: ");
                                 Vector3 currentEuler = new Vector3(180, -90, 180);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
                             else if (xDistance <= -0.4 && yDistance == 0 && zDistance >= 0.4)
                             {
                                 sideFlag = 1;
-                                UnityEngine.Debug.Log("MOVE TO LEFT: ");
+                                //UnityEngine.Debug.Log("MOVE TO LEFT: ");
                                 Vector3 currentEuler = new Vector3(90, 90, 0);
                                 transform.rotation = Quaternion.Euler(currentEuler);
                             }
@@ -182,19 +206,20 @@ public class Snail : MonoBehaviour
                             break;
 
                     }
-
-                    StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
-
-                    if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
-                    currentTile = face;
-
-                    StartCoroutine(TurnOrder(face));
-                   
                 }
+                StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration));
+
+                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                    currentTile = face;
+                face.GetComponent<Tile>().ProcTile(); // TODO; MOVE THIS!
+
+                StartCoroutine(TurnOrder(face));
+
             }
         }
-        
     }
+
+
 
     void UpdateFogOfWar()
     {
@@ -208,7 +233,7 @@ public class Snail : MonoBehaviour
         {
             foreach (GameObject face in cubeSide)
             {
-                if(Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
+                if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                 {
                     face.GetComponent<Tile>().RevealFromFog();
                 }
@@ -328,6 +353,6 @@ public class Snail : MonoBehaviour
             yield return null;
         }
 
-        
+
     }
 }
