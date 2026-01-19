@@ -71,6 +71,8 @@ public class CubeState : MonoBehaviour
 
             }
         }
+
+        GameManager.Instance.PREVENTCARCRASH = false;
     }
 
     private void RockImpact()
