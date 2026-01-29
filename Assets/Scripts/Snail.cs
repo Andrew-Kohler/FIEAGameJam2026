@@ -45,6 +45,8 @@ public class Snail : MonoBehaviour
     public delegate void OnItemPickup(int number);
     public static event OnItemPickup onItemPickup;
 
+    GameObject lastFace;
+
     void Start()
     {
         UpdateFogOfWar(); // Need to do this at start of round
@@ -88,6 +90,8 @@ public class Snail : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f, layerMask))
             {
                 GameObject face = hit.collider.gameObject;
+
+
                 //UnityEngine.Debug.Log("ANDREW: " + Vector3.Distance(currentTile.transform.position, face.transform.position));
                 if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1 && face.GetComponent<Tile>().traversable == true
                     && face.GetComponent<Tile>().currentPassive == null && face.GetComponent<Tile>().tileType != Tile.TileType.Unassigned)
@@ -96,7 +100,6 @@ public class Snail : MonoBehaviour
                     float yDistance = Mathf.Abs(currentTile.transform.position.y - face.transform.position.y);
                     float zDistance = Mathf.Abs(currentTile.transform.position.z - face.transform.position.z);
 
-
                     int halfAxisCount = (Mathf.Abs(xDistance - 0.5f) < 0.01f ? 1 : 0) + (Mathf.Abs(yDistance - 0.5f) < 0.01f ? 1 : 0) + (Mathf.Abs(zDistance - 0.5f) < 0.01f ? 1 : 0);
 
                     if (halfAxisCount == 2)
@@ -104,33 +107,35 @@ public class Snail : MonoBehaviour
                         snailAnimator.SetBool("isLerping", true);
                     }
 
-
-
-
-                        Vector3 moveDir = (face.transform.position - currentTile.transform.position).normalized;
+                    Vector3 moveDir = (face.transform.position - currentTile.transform.position).normalized;
 
                     Vector3 tileUp = face.transform.up;
-                    
+
                     tileUp = hit.normal;
-                    
+
                     Vector3 planarDir = Vector3.ProjectOnPlane(moveDir, tileUp).normalized;
 
                     Quaternion modelOffset = Quaternion.Euler(0, -90, 0);
-                    Quaternion targetRot = Quaternion.LookRotation(planarDir, tileUp) * modelOffset;
+                    Quaternion targetRot = Quaternion.identity;
+                    if (lastFace != face) 
+                    {
+                        targetRot = Quaternion.LookRotation(planarDir, tileUp) * modelOffset;
+                    }
+                    else 
+                    {
+                        targetRot = transform.rotation;
+                    }
                     StartCoroutine(DoLerpPosition(face.transform.position, lerpDuration, targetRot));
-
-                    
 
                     if (Vector3.Distance(currentTile.transform.position, face.transform.position) <= 1.1)
                         currentTile = face;
 
                     StartCoroutine(TurnOrder(face));
                 }
-                
-
+                lastFace = face;
             }
         }
-        
+
     }
 
 
@@ -233,7 +238,10 @@ public class Snail : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, targetPosition, t);
 
             snailAnimator.SetFloat("LERPMove", t);
+
+          
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            
 
             time += Time.deltaTime;
             yield return null;
