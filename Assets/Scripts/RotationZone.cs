@@ -2,6 +2,6 @@ using UnityEngine;
 
 public class RotationZone : MonoBehaviour
 {
-    [Range(0, 2)]
+    [Range(0, 5)]
     public int flag;
 }

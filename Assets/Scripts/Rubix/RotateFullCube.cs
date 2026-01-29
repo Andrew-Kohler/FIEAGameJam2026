@@ -18,9 +18,6 @@ public class RotateFullCube : MonoBehaviour
     private InputAction click;
     bool startedDrag;
 
-    public List<Collider> rotationZones;
-    private Snail snail;
-
 
     private void OnEnable()
     {
@@ -35,7 +32,6 @@ public class RotateFullCube : MonoBehaviour
 
     void Start()
     {
-        snail = GetComponentInChildren<Snail>();
     }
 
     // Update is called once per frame
@@ -64,26 +60,7 @@ public class RotateFullCube : MonoBehaviour
             currentSwipe = new Vector2(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
             currentSwipe.Normalize();
 
-            foreach (Collider zoneCollider in rotationZones)
-            {
-                if (zoneCollider == null) continue;
-
-                // Check if object is inside the zone bounds
-                if (zoneCollider.bounds.Contains(transform.position))
-                {
-                    int zoneFlag = zoneCollider.GetComponent<RotationZone>().flag;
-
-                    if (zoneFlag != null)
-                    {
-                        UnityEngine.Debug.Log("Set After Rotate" + snail.sideFlag);
-
-                        snail.sideFlag = zoneFlag;
-
-                        break; // stop at first zone found
-                    }
-                }
-            }
-
+           
             if (LeftSwipe(currentSwipe))
             {
                 target.transform.Rotate(0, 90, 0, Space.World);
